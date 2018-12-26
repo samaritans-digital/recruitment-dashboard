@@ -1,3 +1,7 @@
-const dynamodbClient = require('./utils/dynamodb')
+// const dynamodbClient = require('./utils/dynamodb')
 
-dynamodbClient()
+// Load config
+require('dotenv').config()
+
+// Run import
+// dynamodbClient()

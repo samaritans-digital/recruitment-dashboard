@@ -7,12 +7,12 @@ const Papa = require('papaparse')
 let headers = []
 let unMarshalledArray = []
 
-AWS.config.update({region: 'eu-west-2'})
+AWS.config.update({region: process.env.AWS_REGION})
 
 const dynamoDB = new AWS.DynamoDB()
 
 const query = {
-  "TableName": "Volunteer-Beta-Applications",
+  "TableName": process.env.DYNAMODB_TABLE,
   "Limit": 1000
 }
 
@@ -59,6 +59,5 @@ const unMarshalIntoArray = (items) => {
   })
 }
 
-module.exports = function(){
-    scanDynamoDB(query)
-}
+scanDynamoDB(query)
+
