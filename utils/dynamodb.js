@@ -1,34 +1,36 @@
 const AWS = require('aws-sdk')
-const unmarshalItem = require('dynamodb-marshaler').unmarshalItem
-const unmarshal = require('dynamodb-marshaler').unmarshal
-const Papa = require('papaparse')
-
-// Empty arrays to store data
-let headers = []
-let unMarshalledArray = []
+const fs = require('fs')
 
 AWS.config.update({region: process.env.AWS_REGION})
 
-const dynamoDB = new AWS.DynamoDB()
+const dynamoDB = new AWS.DynamoDB.DocumentClient()
 
 const query = {
   "TableName": process.env.DYNAMODB_TABLE,
   "Limit": 1000
 }
 
+// Empty array to store data
+let results = []
+
 const scanDynamoDB = (query) => {
+  // Scan entire DB
   dynamoDB.scan(query, (err, data) => {
     if (!err) {
-      unMarshalIntoArray(data.Items)
-
+      results = results.concat(data.Items)
       // Is result complete?
       if (data.LastEvaluatedKey) { 
         // ...Continue querying
         query.ExclusiveStartKey = data.LastEvaluatedKey
         scanDynamoDB(query)
       } else {
-        // ...Finally, log everything out
-        console.log(Papa.unparse( { fields: [ ...headers ], data: unMarshalledArray } ))
+        // ...Finally, save to file
+        fs.writeFile('./enquires.json', JSON.stringify(results), 'utf8', (err) => {
+          if (err) {
+            return console.log(err)
+          }
+          console.log('👍  Data file saved')
+        })
       }
     }
     else {
@@ -37,27 +39,5 @@ const scanDynamoDB = (query) => {
   })
 }
 
-// Process raw data into JS array
-const unMarshalIntoArray = (items) => {
-  if ( items.length === 0 )
-    return
-  items.forEach( (row) => {
-    let newRow = {}
-    Object.keys( row ).forEach( (key) => {
-      if ( headers.indexOf( key.trim() ) === -1 ) {
-        headers.push( key.trim() )
-      }
-      let newValue = unmarshal( row[key] )
-      if ( typeof newValue === 'object' ) {
-        newRow[key] = JSON.stringify( newValue )
-      }
-      else {
-        newRow[key] = newValue
-      }
-    })
-    unMarshalledArray.push( newRow )
-  })
-}
-
+// Start first query
 scanDynamoDB(query)
-
