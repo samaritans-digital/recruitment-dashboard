@@ -25,7 +25,7 @@ const scanDynamoDB = (query) => {
         scanDynamoDB(query)
       } else {
         // ...Finally, save to file
-        fs.writeFile('./enquires.json', JSON.stringify(results), 'utf8', (err) => {
+        fs.writeFile('./enquiries.json', JSON.stringify(results), 'utf8', (err) => {
           if (err) {
             return console.log(err)
           }

@@ -1,9 +1,12 @@
-const enquiries = require('./data.json')
-
 // Load config
 require('dotenv').config()
 
-// Connect to DB
+// Get model
+const Enquiry = require('./models').Enquiry
 
 
-console.log(enquiries.length)
+// Enquiry.findByPk(1, {
+//   raw: true,
+// })
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err))

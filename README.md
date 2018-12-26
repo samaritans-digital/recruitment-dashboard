@@ -1,7 +1,11 @@
 Database import job
 -------------------
 
-1. Once daily, scan DynamoDB table for all records
-2. Save records as CSV file
-3. Re-seed postgres database with that CSV data
-4. Edit another postgres database table to record that the job was successful
+This app contains two parts of a database import/sync task:
+
+- `utils/dynamodb` will scan a DynamoDB table and save the results to a file `enquiries.json`
+- `seeders/seed-enquiries` will use that JSON file to seed a postgres database, according tos a defined schema
+
+Use `npm run migrate` to make sure the schema is up to date, and then `npm run sync` to run the whole job.
+
+To just re-seed the database from a pre-existing enquiries.json file (because AWS DynamoDB scans are expensive and slow), run `npm run seed` instead.
