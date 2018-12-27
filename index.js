@@ -1,16 +1,17 @@
-const express = require('express')
-const logger = require('morgan');
-const router = require('./routers/router')
+const express = require("express")
+const logger = require("morgan")
+const router = require("./routers/router")
 
 // Load config
-require('dotenv').config()
+require("dotenv").config()
 
 // Init express
 const server = express()
-server.use(logger('dev'))
+server.use(logger("dev"))
 
 // Bind routes to URLs
 server.use("/", router)
+server.use(express.static("/public"))
 server.use((req, res)=>{
     res.status(404).send("Route not found")
 })
