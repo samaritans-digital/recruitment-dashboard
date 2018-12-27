@@ -1,7 +1,6 @@
 const router = require("express").Router()
+const controller = require("../controllers/controller")
 
-router.get("/", (req, res)=>{
-    res.send("router working")
-})
+router.get("/", controller.index)
 
 module.exports = router
