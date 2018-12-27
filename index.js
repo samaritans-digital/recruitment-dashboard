@@ -1,12 +1,22 @@
+const express = require('express')
+const logger = require('morgan');
+const router = require('./routers/router')
+
 // Load config
 require('dotenv').config()
 
-// Get model
-const Enquiry = require('./models').Enquiry
+// Init express
+const server = express()
+server.use(logger('dev'))
 
+// Bind routes to URLs
+server.use("/", router)
+server.use((req, res)=>{
+    res.status(404).send("Route not found")
+})
 
-// Enquiry.findByPk(1, {
-//   raw: true,
-// })
-//   .then(data => console.log(data))
-//   .catch(err => console.log(err))
+// Listen for connections
+const port = process.env.PORT || 4000
+server.listen(port, ()=>{
+    console.log(`✅  Server listening on port ${port}`)
+})

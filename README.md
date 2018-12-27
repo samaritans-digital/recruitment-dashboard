@@ -1,3 +1,14 @@
+Recruitment Dashboard
+=====================
+
+Read-only KPI and applicant dashboard for volunteer recruitment. Companion piece to [volunteer.samaritans.org](https://volunteer.samaritans.org).
+
+Offers three views:
+
+- Overview of KPIs, month by month
+- List of applicants
+- Detailed view of specific applicants
+
 Database import job
 -------------------
 

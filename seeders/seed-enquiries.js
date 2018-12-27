@@ -45,9 +45,10 @@ module.exports = {
 
       })
     })
-
-
-    return queryInterface.bulkInsert('Enquiries', normalisedEnquiries, {}, { booking: { type: new Sequelize.JSON() } })
+    return queryInterface.bulkInsert('Enquiries', normalisedEnquiries, {}, { 
+      // Because without this explicitly given, seed fails
+      booking: { type: new Sequelize.JSON() } 
+    })
   },
 
   down: (queryInterface, Sequelize) => {
