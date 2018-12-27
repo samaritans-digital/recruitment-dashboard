@@ -11,7 +11,7 @@ server.use(logger("dev"))
 
 // Bind routes to URLs
 server.use("/", router)
-server.use(express.static("/public"))
+server.use(express.static("public"))
 server.use((req, res)=>{
     res.status(404).send("Route not found")
 })
