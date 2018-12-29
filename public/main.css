@@ -244,7 +244,7 @@ p {
   .details-table.details-table--bottom-margin {
     margin-bottom: 35px; }
   .details-table td, .details-table th {
-    padding: 5px;
+    padding: 5px 0px;
     font-size: 1.1em; }
   .details-table th {
     width: 35%; }
