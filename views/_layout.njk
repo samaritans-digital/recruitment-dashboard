@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <title>{% block title %}Recruitment Dashboard | Samaritans{% endblock %}</title>
     <link href="main.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/img/favicon.ico" />
 </head>
 <body>
 
@@ -17,19 +18,23 @@
 
     <header class="site-header">
         <div class="container">
-            <img class="site-header__logo" src="/img/logo.png" alt="Samaritans"/>
+            <a class="site-header__link" href="/">
+                <img class="site-header__logo" src="/img/logo.png" alt="Samaritans"/>
+            </a>
         </div>
     </header>
 
-    <section class="page-header">
+    <section class="page-header page-header--overlap">
         <div class="container">
             <h1 class="page-header__headline">{% block headline %}{% endblock %}</h1>
             <p class="page-header__lede">{% block lede %}{% endblock %}</p>
         </div>
     </section>
 
+    <div class="container">
+        {% block main %}{% endblock %}
+    </div>
 
-    {% block main %}{% endblock %}
     <footer class="site-footer">
         <div class="container">
             <ul class="site-footer__menu">
@@ -42,7 +47,7 @@
                     </li>
                 {% endblock %}
             </ul>
-            <p class="site-footer__copyright">{% block copyright %}© Copyright 2018 Samaritans. Maintained by the Samaritans digital team.{% endblock %}</p>
+            <p class="site-footer__copyright">{% block copyright %}© Copyright 2018 Samaritans. Built by the Samaritans digital team.{% endblock %}</p>
             <p class="site-footer__legal">{% block legal %}Samaritans is a charity registered in England and Wales (219432) and in Scotland (SC040604) and incorporated in England and Wales as a company limited by guarantee (757372). Samaritans Ireland is a charity registered in the Republic of Ireland (20033668) and incorporated in the Republic of Ireland as a company limited by guarantee (450409). Samaritans in Scotland is a charity registered in Scotland (SC009843) and incorporated as a Scottish Charitable Incorporated Organisation.{% endblock %}</p>
         </div>
     </footer>

@@ -50,6 +50,7 @@ p
     margin: 10px 0px
     flex: 1
 
+
 // Site header
 .site-header
     padding: 20px 0px
@@ -70,9 +71,12 @@ p
         bottom: -9px
         background-size: cover
         z-index: -1
-        margin-bottom: 10px
+        // margin-bottom: 10px
     @media screen and (min-width: 992px)
         padding: 30px 0px
+    &.page-header--overlap
+        padding-bottom: 100px
+        margin-bottom: -70px
 
 .page-header__headline
     font-family: $display-text
@@ -122,9 +126,34 @@ p
     color: transparentize($white, 0.25)
 
 
+// Block
+.block
+    background: $white
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1)
+    padding: 20px
+    position: relative
+    z-index: 1
+    margin-bottom: 20px
+    &.block--bottom-margin
+        margin-bottom: 60px
+    @media screen and (min-width: 768px)
+        padding: 25px
+
+.block__title
+    font-family: $display-text
+    margin-bottom: 30px
 
 
-// .block
-//     background: $white
-//     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1)
+// Recent applicants table
+.applicants-table
+    width: 100%
+    text-align: left
+    border-spacing: 0px
+    border-collapse: collapse
 
+    thead
+        background: $brown
+        th
+            padding: 10px
+            text-transform: uppercase
+            color: $grey

@@ -75,11 +75,13 @@ p {
     position: absolute;
     bottom: -9px;
     background-size: cover;
-    z-index: -1;
-    margin-bottom: 10px; }
+    z-index: -1; }
   @media screen and (min-width: 992px) {
     .page-header {
       padding: 30px 0px; } }
+  .page-header.page-header--overlap {
+    padding-bottom: 100px;
+    margin-bottom: -70px; }
 
 .page-header__headline {
   font-family: "samaritans-webfont", Arial, sans-serif;
@@ -129,3 +131,32 @@ p {
 .site-footer__legal {
   font-size: 0.9em;
   color: rgba(255, 255, 255, 0.75); }
+
+.block {
+  background: #ffffff;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px; }
+  .block.block--bottom-margin {
+    margin-bottom: 60px; }
+  @media screen and (min-width: 768px) {
+    .block {
+      padding: 25px; } }
+
+.block__title {
+  font-family: "samaritans-webfont", Arial, sans-serif;
+  margin-bottom: 30px; }
+
+.applicants-table {
+  width: 100%;
+  text-align: left;
+  border-spacing: 0px;
+  border-collapse: collapse; }
+  .applicants-table thead {
+    background: #D8D4C2; }
+    .applicants-table thead th {
+      padding: 10px;
+      text-transform: uppercase;
+      color: #333; }
