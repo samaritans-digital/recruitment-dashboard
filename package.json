@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "dev": "gulp & nodemon index.js",
+    "build": "gulp build",
     "migrate": "node_modules/.bin/sequelize db:migrate",
     "seed": "node_modules/.bin/sequelize db:seed --seed seed-enquiries",
     "sync": "node utils/dynamodb && node_modules/.bin/sequelize db:seed --seed seed-enquiries"
@@ -25,6 +26,16 @@
     "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
-    "eslint": "^5.11.0"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.11.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.11.0",
+    "path": "^0.12.7",
+    "webpack": "^4.28.2",
+    "webpack-stream": "^5.2.1"
   }
 }

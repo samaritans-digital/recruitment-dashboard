@@ -15,9 +15,10 @@ server.use(logger("dev"))
 server.set("views", path.join(__dirname, "views"))
 nunjucks.configure("views", {
     autoescape: true,
-    express: server
+    express: server,
+    watch: true
 })
-server.set("view engine", "html");
+server.set("view engine", "njk")
 
 // Bind routes to URLs
 server.use("/", router)
