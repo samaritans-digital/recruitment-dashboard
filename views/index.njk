@@ -7,7 +7,7 @@
 {% block main %}
 
 <main class="block block--bottom-margin">
-    <h2 class="block__title">Recent applicants</h2>
+    <h2 class="block__title">Recent applicants{% if page %}, page {{ page }}{% endif %}</h2>
 
     <table class="applicants-table">
         <thead>
@@ -20,13 +20,15 @@
             </tr>
         </thead>
         <tbody>
-        	<tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            {% for applicant in applicants %}
+                <tr>
+                    <td>{{applicant.firstName}} {{applicant.lastName}}</td>
+                    <td>{{applicant.email}}</td>
+                    <td>{{applicant.phone}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

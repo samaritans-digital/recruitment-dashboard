@@ -144,10 +144,13 @@ p {
   @media screen and (min-width: 768px) {
     .block {
       padding: 25px; } }
+  @media screen and (min-width: 992px) {
+    .block {
+      padding: 30px; } }
 
 .block__title {
   font-family: "samaritans-webfont", Arial, sans-serif;
-  margin-bottom: 30px; }
+  margin-bottom: 35px; }
 
 .applicants-table {
   width: 100%;
@@ -157,6 +160,12 @@ p {
   .applicants-table thead {
     background: #D8D4C2; }
     .applicants-table thead th {
-      padding: 10px;
+      padding: 15px 12px 12px 12px;
       text-transform: uppercase;
       color: #333; }
+  .applicants-table tr {
+    border-bottom: 1px solid rgba(51, 51, 51, 0.1); }
+  .applicants-table td {
+    padding: 15px 12px 12px 12px; }
+    .applicants-table td:first-of-type {
+      font-weight: bold; }

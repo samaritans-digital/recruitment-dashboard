@@ -9,7 +9,7 @@ require("dotenv").config()
 
 // Init express
 const server = express()
-server.use(logger("dev"))
+// server.use(logger("dev"))
 
 // View config
 server.set("views", path.join(__dirname, "views"))

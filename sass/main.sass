@@ -138,10 +138,12 @@ p
         margin-bottom: 60px
     @media screen and (min-width: 768px)
         padding: 25px
+    @media screen and (min-width: 992px)
+        padding: 30px
 
 .block__title
     font-family: $display-text
-    margin-bottom: 30px
+    margin-bottom: 35px
 
 
 // Recent applicants table
@@ -154,6 +156,13 @@ p
     thead
         background: $brown
         th
-            padding: 10px
+            padding: 15px 12px 12px 12px
             text-transform: uppercase
             color: $grey
+    tr
+        border-bottom: 1px solid transparentize($grey, 0.90)
+
+    td
+        padding: 15px 12px 12px 12px
+        &:first-of-type
+            font-weight: bold
