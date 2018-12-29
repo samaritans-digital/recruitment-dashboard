@@ -198,3 +198,17 @@ p {
 
 .pagination__button:last-of-type {
   margin-right: 0px; }
+
+@supports (display: grid) {
+  @media screen and (min-width: 768px) {
+    .grid {
+      display: grid;
+      grid-column-gap: 20px;
+      grid-column-gap: 25px; } }
+  @media screen and (min-width: 992px) {
+    .grid {
+      grid-column-gap: 30px; } }
+  .grid.grid--with-sidebar {
+    grid-template-columns: 2fr 1fr; }
+  .grid.grid--bottom-margin {
+    margin-bottom: 60px; } }

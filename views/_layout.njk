@@ -26,6 +26,7 @@
 
     <section class="page-header page-header--overlap">
         <div class="container">
+            <ul class="page-header__breadcrumbs">{% block breadcrumbs %}{% endblock %}</ul>
             <h1 class="page-header__headline">{% block headline %}{% endblock %}</h1>
             <p class="page-header__lede">{% block lede %}{% endblock %}</p>
         </div>

@@ -20,7 +20,7 @@
         <tbody>
             {% for applicant in applicants %}
                 <tr>
-                    <td><a href="#">{{applicant.firstName}} {{applicant.lastName}}</a></td>
+                    <td><a href="/applicant/{{applicant.enquiryId}}">{{applicant.firstName}} {{applicant.lastName}}</a></td>
                     <td>{{applicant.email}}</td>
                     <td>{{applicant.phone}}</td>
                     <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeAgo }}{% endif %}</td>

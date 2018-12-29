@@ -1,0 +1,48 @@
+{% extends "_layout.njk" %}
+
+{% block title %}Applicant name {% endblock %}
+{% block breadcrumbs %}
+    <li class="page-header__breadcrumb"><a class="page-header__breadcrumb-link" href="/">Dashboard</a></li>
+    <li class="page-header__breadcrumb">Applicant details</li>
+{% endblock %}
+{% block headline %}Applicant{% endblock %}
+{% block lede %}Lede{% endblock %}
+{% block main %}
+
+<div class="grid grid--with-sidebar grid--bottom-margin">
+
+    <main>
+        <article class="block">Test</article>
+
+        <article class="block">
+            <h2 class="block__title">Contact details</h2>
+        </article>
+
+        <article class="block">
+            <h2 class="block__title">Interview booking</h2>
+        </article>
+
+
+    </main>
+
+
+
+    <aside class="sidebar">
+        <article class="block">
+            <h2 class="block__title">Location</h2>
+        </article>
+
+        <article class="block">
+            <h2 class="block__title">More about them</h2>
+        </article>
+
+        <article class="block">
+            <h2 class="block__title">Contact preferences</h2>
+        </article>
+    </aside>
+
+
+
+</div>
+
+{% endblock %}
