@@ -1,3 +1,4 @@
+@import '_fonts'
 @import '_vars'
 
 // Resets
@@ -5,11 +6,17 @@
     margin: 0
     padding: 0
     box-sizing: border-box
-    font-family: $p-stack
+    font-family: $normal-text
 
 // Background gradient
 body
     background: linear-gradient(to right, #d8d4c2 0%, #fdfdfd 29%, #fdfdfd 71%, #d8d4c2 100%)
+
+a
+    color: $blue
+
+p
+    line-height: 1.5em
 
 // Fixed width container
 .container
@@ -17,7 +24,107 @@ body
     margin: 0px auto
     padding: 0px 15px
 
-.block
-    background: $white
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1)
+
+// Phase banner
+.phase-banner
+    background: $black
+    color: $white
+
+.phase-banner__inner
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+.phase-banner__icon
+    display: inline-block
+    height: 70px
+    flex: 0
+    width: auto
+    margin-right: 20px
+    @media screen and (min-width: 600px)
+        max-height: 45px
+
+.phase-banner__text
+    display: inline-block
+    margin: 10px 0px
+    flex: 1
+
+// Site header
+.site-header
+    padding: 20px 0px
+
+
+// Page header
+.page-header
+    background: $green
+    padding: 20px 0px
+    position: relative
+    &:after
+        content: ""
+        display: block
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIyMDAgMjAiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDIyMDAgMjAiIHNoYXBlLXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7ZmlsbDojN2FjMTQzO308L3N0eWxlPjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMCAyMCAwIDAgMjIwMCAwIi8+PC9zdmc+)
+        width: 100%
+        height: 10px
+        position: absolute
+        bottom: -9px
+        background-size: cover
+        z-index: -1
+        margin-bottom: 10px
+    @media screen and (min-width: 992px)
+        padding: 30px 0px
+
+.page-header__headline
+    font-family: $display-text
+    margin-bottom: 10px
+    @media screen and (min-width: 768px)
+        font-size: 2em
+    @media screen and (min-width: 992px)
+        margin-bottom: 15px
+        font-size: 3em
+
+.page-header__lede
+    font-size: 1.1em
+    @media screen and (min-width: 768px)
+        font-size: 1.2em
+        max-width: 66.67%
+    @media screen and (min-width: 992px)
+        font-size: 1.4em
+
+
+// Site footer
+.site-footer
+    padding: 40px 0px
+    background: $blue
+    color: $white
+
+.site-footer__menu
+    margin-bottom: 15px
+
+.site-footer__menu-item
+    display: inline-block
+    margin-right: 10px
+    border-right: 1px solid $white
+    padding-right: 10px
+    &:last-of-type
+        margin-right: 0px
+        border-right: none
+        padding-right: 0px
+
+.site-footer__menu-link
+    color: $white
+
+.site-footer__copyright
+    margin-bottom: 15px
+
+.site-footer__legal
+    font-size: 0.9em
+    color: transparentize($white, 0.25)
+
+
+
+
+// .block
+//     background: $white
+//     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1)
 
