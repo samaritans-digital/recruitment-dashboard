@@ -1,4 +1,6 @@
 const express = require("express")
+const nunjucks = require("nunjucks")
+const path = require("path")
 const logger = require("morgan")
 const router = require("./routers/router")
 
@@ -8,6 +10,14 @@ require("dotenv").config()
 // Init express
 const server = express()
 server.use(logger("dev"))
+
+// View config
+server.set("views", path.join(__dirname, "views"))
+nunjucks.configure("views", {
+    autoescape: true,
+    express: server
+})
+server.set("view engine", "html");
 
 // Bind routes to URLs
 server.use("/", router)
@@ -21,8 +31,3 @@ const port = process.env.PORT || 4000
 server.listen(port, ()=>{
     console.log(`✅  Server listening on port ${port}`)
 })
-
-const Enquiry = require('./models').Enquiry
-
-Enquiry.findByPk(2)
-    .then(data=>console.log(data))
