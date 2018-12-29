@@ -62,6 +62,11 @@ p
     padding: 20px 0px
     position: relative
     &:after
+        left: 0
+        right: 0
+        background-repeat: no-repeat
+        background-size: 2200px 20px
+        background-position: left top
         content: ""
         display: block
         background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIyMDAgMjAiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDIyMDAgMjAiIHNoYXBlLXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7ZmlsbDojN2FjMTQzO308L3N0eWxlPjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMCAyMCAwIDAgMjIwMCAwIi8+PC9zdmc+)
@@ -69,25 +74,40 @@ p
         height: 10px
         position: absolute
         bottom: -9px
-        background-size: cover
         z-index: -1
     @media screen and (min-width: 992px)
         padding: 30px 0px
     &.page-header--overlap
-        padding-bottom: 100px
+        padding-bottom: 90px
         margin-bottom: -70px
+        @media screen and (min-width: 768px)
+            padding-bottom: 110px
 
+.page-header__breadcrumbs
+    list-style: none
+    margin-bottom: 15px
+    @media screen and (min-width: 992px)
+        margin-bottom: 20px
+
+.page-header__breadcrumb
+    display: inline-block
+    font-size: 1.1em
+
+.page-header__breadcrumb-link
+    color: inherit
+    
 .page-header__headline
     font-family: $display-text
     margin-bottom: 10px
     @media screen and (min-width: 768px)
         font-size: 2em
     @media screen and (min-width: 992px)
-        margin-bottom: 15px
+        margin-bottom: 10px
         font-size: 3em
 
 .page-header__lede
     font-size: 1.1em
+    margin-top: 0px
     @media screen and (min-width: 768px)
         font-size: 1.2em
         max-width: 66.67%
@@ -179,6 +199,7 @@ p
     border-radius: 2px
     border: 0
     color: $black
+    font-size: 1em
     padding: 15px
     text-decoration: none
     text-align: center
@@ -214,3 +235,19 @@ p
             grid-template-columns: 2fr 1fr    
         &.grid--bottom-margin
             margin-bottom: 60px
+        
+
+// Applicant details table
+.details-table
+    width: 100%
+    text-align: left
+    border-spacing: 0px
+    border-collapse: collapse
+    &.details-table--bottom-margin
+        margin-bottom: 35px
+    td, th
+        padding: 5px
+        font-size: 1.1em
+
+    th
+        width: 35%

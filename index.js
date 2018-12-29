@@ -3,7 +3,7 @@ const nunjucks = require("nunjucks")
 const path = require("path")
 const logger = require("morgan")
 const router = require("./routers/router")
-const moment = require("moment")
+const filters = require("./utils/nunjucksFilters")
 
 // Load config
 require("dotenv").config()
@@ -18,13 +18,9 @@ const nunjucksEnv = nunjucks.configure("views", {
     autoescape: true,
     express: server,
     watch: true // Slows things down
-});
-nunjucksEnv.addFilter("timeAgo", function(rawDate) {
-    return moment().to(rawDate)
 })
-nunjucksEnv.addFilter("prettyDate", function(rawDate) {
-    return moment(rawDate).format("Do MMM YY ha")
-})
+// Apply nunjucks filters
+filters(nunjucksEnv)
 server.set("view engine", "njk")
 
 // Bind routes to URLs

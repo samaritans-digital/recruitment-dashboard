@@ -1,0 +1,35 @@
+const moment = require("moment")
+
+module.exports = (env) => {
+
+    // Display time since a past event
+    env.addFilter("timeAgo", (rawDate) => {
+        return moment().to(rawDate)
+    })
+
+    // Convert date to XXth Dec XX Xpm format
+    env.addFilter("prettyDate", (rawDate) => {
+        return moment(rawDate).format("Do MMM YY ha")
+    })
+
+    // Pretty up the role field
+    env.addFilter("prettyRole", (rawRole) => {
+        if(rawRole === "listening-volunteer"){
+            return "listening volunteer"
+        } else {
+            return "branch volunteer"
+        }
+    })
+
+    // Pretty up the interview type field
+    env.addFilter("prettyInterviewType", (type) => {
+        if(type === "video"){
+            return "Video"
+        } else if (type === "phone") {
+            return "Phone"
+        } else {
+            return "Face to face"
+        }
+    })
+
+}
