@@ -1,35 +1,43 @@
 "use strict"
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
     var Enquiry = sequelize.define("Enquiry", {
 
-        firstName: DataTypes.STRING,
-        lastName: DataTypes.STRING,
-        email: DataTypes.STRING,
-        phone: DataTypes.STRING,
-        accessibilityRequirements: DataTypes.TEXT,
+        // Virtual columns
+        status: {
+            type: Sequelize.VIRTUAL,
+            get: function () {
+                return true
+            }
+        },
 
-        applicationTime: DataTypes.DATE,
-        ip: DataTypes.STRING,
+        firstName: Sequelize.STRING,
+        lastName: Sequelize.STRING,
+        email: Sequelize.STRING,
+        phone: Sequelize.STRING,
+        accessibilityRequirements: Sequelize.TEXT,
 
-        role: DataTypes.STRING,
-        branchId: DataTypes.STRING,
-        booking: DataTypes.JSON,
-        bookingDate: DataTypes.DATE,
+        applicationTime: Sequelize.DATE,
+        ip: Sequelize.STRING,
 
-        contactAboutPeopleInNeed: DataTypes.BOOLEAN,
-        contactAboutFundraising: DataTypes.BOOLEAN,
-        contactByEmail: DataTypes.BOOLEAN,
-        contactBySms: DataTypes.BOOLEAN,
-        contactByPhone: DataTypes.BOOLEAN,
+        role: Sequelize.STRING,
+        branchId: Sequelize.STRING,
+        booking: Sequelize.JSON,
+        bookingDate: Sequelize.DATE,
 
-        gender: DataTypes.STRING,
-        ageRange: DataTypes.STRING,
-        ethnicBackground: DataTypes.STRING,
+        contactAboutPeopleInNeed: Sequelize.BOOLEAN,
+        contactAboutFundraising: Sequelize.BOOLEAN,
+        contactByEmail: Sequelize.BOOLEAN,
+        contactBySms: Sequelize.BOOLEAN,
+        contactByPhone: Sequelize.BOOLEAN,
 
-        enquiryId: DataTypes.STRING,
+        gender: Sequelize.STRING,
+        ageRange: Sequelize.STRING,
+        ethnicBackground: Sequelize.STRING,
 
-        sentMailReminder: DataTypes.BOOLEAN,
-        sentSmsReminder: DataTypes.BOOLEAN
+        enquiryId: Sequelize.STRING,
+
+        sentMailReminder: Sequelize.BOOLEAN,
+        sentSmsReminder: Sequelize.BOOLEAN
 
     }, {})
     // Enquiry.associate = function(models) {

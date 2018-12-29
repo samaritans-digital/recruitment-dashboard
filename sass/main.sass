@@ -152,17 +152,51 @@ p
     text-align: left
     border-spacing: 0px
     border-collapse: collapse
+    margin-bottom: 35px
+
+    img
+        max-height: 20px
 
     thead
         background: $brown
         th
             padding: 15px 12px 12px 12px
             text-transform: uppercase
-            color: $grey
+            color: transparentize($grey, 0.5)
     tr
-        border-bottom: 1px solid transparentize($grey, 0.90)
+        border-bottom: 1px solid transparentize($grey, 0.9)
 
     td
         padding: 15px 12px 12px 12px
+        font-size: 0.9em
         &:first-of-type
             font-weight: bold
+
+
+// Button
+.button
+    display: inline-block
+    background: $green
+    border-radius: 2px
+    border: 0
+    color: $black
+    padding: 15px
+    text-decoration: none
+    text-align: center
+    margin-right: 15px
+    box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.5)
+    cursor: pointer
+    font-family: $display-text
+    min-width: 100px
+    &:focus
+        box-shadow: none
+
+
+// Pagination
+.pagination
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+
+.pagination__button:last-of-type
+    margin-right: 0px
