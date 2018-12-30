@@ -287,6 +287,10 @@ p
             background-size: 15px
             background-position: center
             background-repeat: no-repeat
+    &.timeline__step--inactive
+        &:before
+            border-color: transparentize($grey, 0.75)
+            color: transparentize($grey, 0.75)
     &:before
         position: absolute
         left: 0px
@@ -333,6 +337,7 @@ p
 
 .none-given
     color: transparentize($grey, 0.5)
+    font-style: italic
 
 // Email link
 .email-link

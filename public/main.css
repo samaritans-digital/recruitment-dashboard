@@ -282,6 +282,9 @@ p {
     background-size: 15px;
     background-position: center;
     background-repeat: no-repeat; }
+  .timeline__step.timeline__step--inactive:before {
+    border-color: rgba(51, 51, 51, 0.25);
+    color: rgba(51, 51, 51, 0.25); }
   .timeline__step:before {
     position: absolute;
     left: 0px;
@@ -325,7 +328,8 @@ p {
   font-size: 0.9em; }
 
 .none-given {
-  color: rgba(51, 51, 51, 0.5); }
+  color: rgba(51, 51, 51, 0.5);
+  font-style: italic; }
 
 .email-link {
   margin-left: 15px; }

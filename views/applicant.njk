@@ -6,7 +6,7 @@
     <li class="page-header__breadcrumb">Applicant details</li>
 {% endblock %}
 {% block headline %}{{applicant.firstName}} {{applicant.lastName}}{% endblock %}
-{% block lede %}Prospective <strong>{{applicant.role | prettyRole}}</strong> at <strong>{{applicant.branchId}}</strong> branch {% endblock %}
+{% block lede %}Prospective <strong>{{applicant.role | prettyRole}}</strong> at <strong>{{branch.name}}</strong> branch {% endblock %}
 {% block main %}
 
 <div class="grid grid--with-sidebar grid--bottom-margin">
@@ -27,7 +27,7 @@
                     {# {{applicant.smsReminderSent}} #}
                     SMS reminder
                 </li>
-                <li class="timeline__step">
+                <li class="timeline__step timeline__step--inactive">
                     Interview on {{applicant.booking.startTime | prettyDate}}
                     <span class="timeline__time-diff">{{applicant.booking.startTime | timeTo}}</span>
                 </li>
@@ -60,23 +60,32 @@
 
         <article class="block">
             <h2 class="block__title">Interview booking</h2>
-            <table class="details-table details-table--bottom-margin">
-                <tbody>
-                    <tr>
-                        <th scope="row">Date and time</th>
-                        <td>{{applicant.booking.startTime | prettyDate}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Type</th>
-                        <td>{{applicant.booking.type | prettyInterviewType}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Host branch</th>
-                        <td>{{applicant.booking.branch.name}} <a class="email-link" href="mailto:{{applicant.booking.branch.email}}">Email host branch</a></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="button">Reschedule or cancel</button>
+            {% if applicant.booking %}
+                <table class="details-table details-table--bottom-margin">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Date and time</th>
+                            <td>{{ applicant.booking.startTime | prettyDate }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Type</th>
+                            <td>{{applicant.booking.type | prettyInterviewType}}</td>
+                        </tr>
+                        {% if applicant.branchId !== applicant.booking.branch.id %}
+                            <tr>
+                                <th scope="row">Host branch</th>
+                                <td>
+                                    {{applicant.booking.branch.name}}
+                                    <a class="email-link" href="mailto:{{applicant.booking.branch.email}}">Email host branch</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                <button class="button">Reschedule or cancel</button>
+            {% else %}
+                <span class="none-given">No interview booked.</span>
+            {% endif %}
         </article>
 
     </main>
@@ -84,10 +93,34 @@
 
 
     <aside class="sidebar">
+
         <article class="block">
-            <h2 class="block__title">Location</h2>
-            <p>Based on their IP address, this person was in when they applied.</p>
-            <p class="small">IP address locations are not always accurate and shouldn't be relied on, especially for people using mobile internet connections.</p>
+            <h2 class="block__title">Contact preferences</h2>
+            <table class="details-table">
+                <tbody>
+                    <tr>
+                        <th scope="row">This person wants to hear about...</th>
+                        <td>
+                            {% if applicant.contactAboutPeopleInNeed %}Vital work{% endif %}
+                            {% if applicant.contactFundraising %}Fundraising{% endif %}
+                            {% if not applicant.contactFundraising and not applicant.contactAboutPeopleInNeed %}
+                                <span class="none-given">None given</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">By...</th>
+                        <td>
+                            {% if applicant.contactByEmail %}Email{% endif %}
+                            {% if applicant.contactBySms %}SMS{% endif %}
+                            {% if applicant.contactByPhone %}Phone{% endif %}
+                            {% if not applicant.contactByEmail and not applicant.contactBySms and not applicant.contactByPhone %}
+                                <span class="none-given">None given</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </article>
 
         <article class="block">
@@ -119,20 +152,11 @@
         </article>
 
         <article class="block">
-            <h2 class="block__title">Contact preferences</h2>
-            <table class="details-table">
-                <tbody>
-                    <tr>
-                        <th scope="row">This person wants to hear about...</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">By...</th>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            <h2 class="block__title">Location</h2>
+            <p>Based on their IP address, this person was in <strong>{{location.city}}, {{location.country_name}}</strong> when they applied.</p>
+            <p class="small">IP address locations are not always accurate and shouldn't be relied on, especially for people using mobile internet connections.</p>
         </article>
+
     </aside>
 
 

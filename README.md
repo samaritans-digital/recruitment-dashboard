@@ -9,6 +9,18 @@ Offers three views:
 - List of applicants
 - Detailed view of specific applicants
 
+Environment variables
+---------------------
+
+The app needs the following environment variables set to run:
+
+* Standard AWS credentials of `AWS_REGION`, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+* `DYNAMODB_TABLE`, the AWS DynamoDB table to scan
+* `DATABASE_URL`, a postgres connection string
+* `IPSTACK_API_KEY`, an API key for the IPstack geolocation service
+* `FRONTEND_HOST`, the location of the Samaritans volunteer front-end app on the web
+
+
 Database import job
 -------------------
 
