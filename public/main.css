@@ -30,6 +30,11 @@ p {
   line-height: 1.5em;
   margin-bottom: 15px; }
 
+.visually-hidden {
+  font-size: 0;
+  opacity: 0;
+  left: -10000px; }
+
 main {
   display: block; }
 
@@ -189,7 +194,10 @@ main {
 
 .block__title {
   font-family: "samaritans-webfont", Arial, sans-serif;
-  margin-bottom: 35px; }
+  margin-bottom: 25px; }
+  @media screen and (min-width: 992px) {
+    .block__title {
+      margin-bottom: 35px; } }
 
 .applicants-table {
   width: 100%;
@@ -237,9 +245,37 @@ main {
   box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   font-family: "samaritans-webfont", Arial, sans-serif;
-  min-width: 100px; }
+  min-width: 100px;
+  position: relative; }
   .button:focus {
     box-shadow: none; }
+  .button.button--start {
+    padding-top: 17px;
+    padding-right: 55px;
+    padding-bottom: 14px; }
+    .button.button--start:before {
+      content: '';
+      background-position: left center;
+      position: absolute;
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 100"%3E%3Cpath fill="%237ac143" d="M0,0L43,50L0,100Z"/%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 3rem;
+      top: 0;
+      bottom: 0;
+      right: -2.94rem; }
+    .button.button--start:after {
+      content: '';
+      position: absolute;
+      background-position: left center;
+      background-image: url("/img/arrow.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 23px;
+      height: 18px;
+      top: 50%;
+      margin-top: -9px;
+      right: 1rem; }
 
 .pagination {
   display: flex;
@@ -432,3 +468,49 @@ main {
     height: 15px;
     background-repeat: no-repeat;
     margin-bottom: -3px; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(51, 51, 51, 0.75);
+  z-index: 99;
+  display: none; }
+  .overlay.visible {
+    display: block;
+    animation: fadeIn 0.2s ease-out; }
+
+.reschedule-modal {
+  max-width: 600px;
+  margin: 0px auto;
+  position: fixed;
+  top: 60px;
+  left: 0px;
+  right: 0px;
+  z-index: 100;
+  border-radius: 2px;
+  overflow: hidden;
+  display: none; }
+  @media screen and (min-width: 992px) {
+    .reschedule-modal {
+      top: 120px; } }
+  .reschedule-modal.visible {
+    display: block;
+    animation: fadeIn 0.2s ease-out; }
+
+.reschedule-modal__inner p {
+  font-size: 1.1em; }
+
+.reschedule-modal__title {
+  margin-bottom: 20px; }
+
+.reschedule-modal__button {
+  margin-top: 20px; }

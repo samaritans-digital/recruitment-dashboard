@@ -19,6 +19,11 @@ p
     line-height: 1.5em
     margin-bottom: 15px
 
+.visually-hidden
+    font-size: 0
+    opacity: 0
+    left: -10000px
+
 // IE fix
 main
   display: block
@@ -180,8 +185,9 @@ main
 
 .block__title
     font-family: $display-text
-    margin-bottom: 35px
-
+    margin-bottom: 25px
+    @media screen and (min-width: 992px)
+        margin-bottom: 35px
 
 // Recent applicants table
 .applicants-table
@@ -236,9 +242,37 @@ main
     cursor: pointer
     font-family: $display-text
     min-width: 100px
+    position: relative
     &:focus
         box-shadow: none
 
+    &.button--start
+        padding-top: 17px
+        padding-right: 55px
+        padding-bottom: 14px
+        &:before
+            content: ''
+            background-position: left center
+            position: absolute
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 100"%3E%3Cpath fill="%237ac143" d="M0,0L43,50L0,100Z"/%3E%3C/svg%3E')
+            background-repeat: no-repeat
+            background-size: contain
+            width: 3rem
+            top: 0
+            bottom: 0
+            right: -2.94rem
+        &:after
+            content: ''
+            position: absolute
+            background-position: left center
+            background-image: url('/img/arrow.png')
+            background-repeat: no-repeat
+            background-size: cover
+            width: 23px
+            height: 18px
+            top: 50%
+            margin-top: -9px
+            right: 1rem
 
 // Pagination
 .pagination
@@ -451,3 +485,50 @@ main
         height: 15px
         background-repeat: no-repeat
         margin-bottom: -3px
+
+
+@keyframes fadeIn
+    from
+        opacity: 0
+    to
+        opacity: 1
+
+.overlay
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background: transparentize($grey, 0.25)
+    z-index: 99
+    display: none
+    &.visible
+        display: block
+        animation: fadeIn 0.2s ease-out
+
+.reschedule-modal
+    max-width: 600px
+    margin: 0px auto
+    position: fixed
+    top: 60px
+    left: 0px
+    right: 0px
+    z-index: 100
+    border-radius: 2px
+    overflow: hidden
+    @media screen and (min-width: 992px)
+        top: 120px
+    display: none
+    &.visible
+        display: block
+        animation: fadeIn 0.2s ease-out
+
+.reschedule-modal__inner
+    p
+        font-size: 1.1em
+
+.reschedule-modal__title
+    margin-bottom: 20px
+
+.reschedule-modal__button
+    margin-top: 20px

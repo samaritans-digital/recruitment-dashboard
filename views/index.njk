@@ -8,6 +8,7 @@
     <h2 class="block__title">{% if sortQuery === "soonest" %}Upcoming interviews{% else %}Recent applicants{% endif %}{% if page > 1 %}, page {{ page }}{% endif %}</h2>
 
     <form class="applicants-filters">
+        <label for="branch" class="visually-hidden">Branches to display</label>
         <select class="applicants-filters__select" name="branch">
             <option value="" {% if branchQuery === "" %}selected{% endif %}>All branches</option>
             <option value="leeds" {% if branchQuery === "leeds" %}selected{% endif %}>Leeds</option>
@@ -15,6 +16,7 @@
             <option value="manchester" {% if branchQuery === "manchester" %}selected{% endif %}>Manchester</option>
         </select>
 
+        <label for="sort" class="visually-hidden">Sort results</label>
         <select class="applicants-filters__select" name="sort">
             <option value="" {% if sortQuery === "" %}selected{% endif %}>Sort by newest</option>
             <option value="soonest" {% if sortQuery === "soonest" %}selected{% endif %}>Sort by soonest interview</option>
@@ -24,10 +26,10 @@
     <table class="applicants-table">
         <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Chosen branch</th>
-                <th scope="col">Applied</th>
-                <th scope="col">Interview</th>
+                <th scope="col" >Name</th>
+                <th scope="col" class="with-tooltip" title="The branch this person wants to volunteer at">Chosen branch</th>
+                <th scope="col" class="with-tooltip" title="When this person filled in the online form">Applied</th>
+                <th scope="col" class="with-tooltip" title="The time and date of the interview this person booked">Interview</th>
             </tr>
         </thead>
         <tbody>

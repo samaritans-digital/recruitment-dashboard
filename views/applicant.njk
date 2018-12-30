@@ -15,6 +15,7 @@
     <main>
 
         <article class="block">
+            <h2 class="visually-hidden">Application history</h2>
             <ol class="timeline">
                 <li class="timeline__step timeline__step--complete">
                     <p>Applied {{applicant.applicationTime | prettyDate}}</p>
@@ -121,7 +122,7 @@
                 {% if interviewComplete %}
                     <p class="small">The booked interview slot is in the past, but you can still reschedule it to a future date.</p>
                 {% endif %}
-                <a class="button" href="http://volunteer.samaritans.org/volunteer/{{applicant.id}}/reschedule">Reschedule or cancel</a>
+                <button class="button button--start" id="launch-modal">Reschedule or cancel</button>
             {% else %}
                 <span class="none-given">No interview booked.</span>
             {% endif %}
@@ -208,9 +209,17 @@
         </article>
 
     </aside>
+</div>
 
-
-
+{# Overlay #}
+<div class="overlay"></div>
+<div class="reschedule-modal block">
+    <article class="reschedule-modal__inner">
+        <h2 class="block__title reschedule-modal__title">Reschedule or cancel this interview</h2>
+        <p>You can cancel or reschedule this person's booked interview on their behalf. They will get an automated email confirming the new interview time.</p>
+        <p><strong>Only do this if you've been in touch with them beforehand</strong> and they understand that their interview is being rescheduled.</p>
+        <a href="http://volunteer.samaritans.org/volunteer/{{applicant.id}}/reschedule" class="button button--start reschedule-modal__button">Continue</a>
+    </article>
 </div>
 
 {% endblock %}
