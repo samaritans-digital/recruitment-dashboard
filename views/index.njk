@@ -1,5 +1,5 @@
 {% extends "_layout.njk" %}
-{% block headline %}Application dashboard{% if page %}, page {{ page }}{% endif %}{% endblock %}
+{% block headline %}Application dashboard{% if page > 1 %}, page {{ page }}{% endif %}{% endblock %}
 {% block lede %}See how your branch is performing in recruitment, relative to others in the region and the country.{% endblock %}
 {% block main %}
 
@@ -12,8 +12,8 @@
         </select>
 
         <select class="applicants-filters__select" name="sort">
-            <option value="most-recent">Most recent</option>
-            <option value="soonest-interview">Soonest interview</option>
+            <option value="most-recent">Sort by most recent</option>
+            <option value="soonest-interview">Sort by soonest interview</option>
         </select>
     </form>
 

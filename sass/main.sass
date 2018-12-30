@@ -200,7 +200,7 @@ main
         border-bottom: 1px solid transparentize($grey, 0.9)
     td
         padding: 15px 12px 12px 12px
-        font-size: 0.9em
+        font-size: 0.95em
         &:first-of-type
             font-weight: bold
 
@@ -253,6 +253,26 @@ main
     margin-right: 0px
 
 
+// Table filter and sort
+.applicants-filters
+    margin-bottom: 25px
+    @media screen and (min-width: 768px)
+        float: right
+        margin-top: -67px
+
+.applicants-filters__select
+    margin-right: 10px
+    width: 75%
+    font-size: 1em
+    padding: 5px
+    border-radius: 2px
+    color: $grey
+    &:first-of-type
+        margin-bottom: 10px
+    @media screen and (min-width: 768px)
+        width: 190px
+
+
 // Grid helper
 .grid
     @supports( display: grid )
@@ -294,6 +314,9 @@ main
 // Timeline
 .timeline
     list-style: none
+    @media screen and (min-width: 992px)
+        display: flex
+        flex-direction: row
 
 .timeline__step
     display: flex
@@ -302,7 +325,6 @@ main
     min-height: 60px
     position: relative
     padding-left: 60px
-
     p
         margin-bottom: 0px
 
@@ -366,8 +388,27 @@ main
         &:after
             border-color: transparentize($grey, 0.75)
 
-
-
+    @media screen and (min-width: 992px)
+        text-align: center
+        padding-top: 60px
+        padding-left: 15px
+        padding-right: 15px
+        justify-content: flex-start
+        flex: 1
+        &:before
+            top: 0px
+            left: 50%
+            transform: translateX(-50%)
+        &:after
+            left: -50%
+            top: 20px
+            content: ""
+            display: block
+            border-left: none
+            border-top: 3px solid $green
+            height: 0px
+            width: 100%
+            z-index: 1
 
 
 .timeline__small

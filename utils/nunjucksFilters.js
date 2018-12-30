@@ -7,7 +7,7 @@ module.exports = (env) => {
         if(rawValue){
             return rawValue
         } else {
-            return "<span class='none-given'>None given</span>"
+            return "<span class='none-given'>Not given</span>"
         }
     })
 
