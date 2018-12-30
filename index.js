@@ -4,6 +4,7 @@ const path = require("path")
 const logger = require("morgan")
 const router = require("./routers/router")
 const filters = require("./utils/nunjucksFilters")
+const basicAuth = require('express-basic-auth')
 
 // Load env
 require("dotenv").config()
@@ -22,6 +23,12 @@ const nunjucksEnv = nunjucks.configure("views", {
 // Apply nunjucks filters
 filters(nunjucksEnv)
 server.set("view engine", "njk")
+
+// Authentication
+server.use(basicAuth({
+    users: { [process.env.USER]: process.env.PASSWORD },
+    challenge: true
+}))
 
 // Bind routes to URLs
 server.use("/", router)
