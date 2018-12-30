@@ -3,13 +3,22 @@ const moment = require("moment")
 module.exports = (env) => {
 
     // Display time since a past event
-    env.addFilter("timeAgo", (rawDate) => {
+    env.addFilter("noneGiven", (rawValue) => {
+        if(rawValue){
+            return rawValue
+        } else {
+            return "<span class='none-given'>None given</span>"
+        }
+    })
+
+    // Display time since a past event
+    env.addFilter("timeTo", (rawDate) => {
         return moment().to(rawDate)
     })
 
     // Convert date to XXth Dec XX Xpm format
     env.addFilter("prettyDate", (rawDate) => {
-        return moment(rawDate).format("Do MMM YY ha")
+        return moment(rawDate).format("Do MMM YYYY ha")
     })
 
     // Pretty up the role field

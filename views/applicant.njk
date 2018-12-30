@@ -1,12 +1,12 @@
 {% extends "_layout.njk" %}
 
-{% block title %}Applicant name {% endblock %}
+{% block title %}{{applicant.firstName}} {{applicant.lastName}}{% endblock %}
 {% block breadcrumbs %}
     <li class="page-header__breadcrumb"><a class="page-header__breadcrumb-link" href="/">Dashboard</a></li>
     <li class="page-header__breadcrumb">Applicant details</li>
 {% endblock %}
 {% block headline %}{{applicant.firstName}} {{applicant.lastName}}{% endblock %}
-{% block lede %}Prospective <strong>{{applicant.role | prettyRole}}</strong> at {{applicant.branchId}} branch {% endblock %}
+{% block lede %}Prospective <strong>{{applicant.role | prettyRole}}</strong> at <strong>{{applicant.branchId}}</strong> branch {% endblock %}
 {% block main %}
 
 <div class="grid grid--with-sidebar grid--bottom-margin">
@@ -17,18 +17,19 @@
             <ol class="timeline">
                 <li class="timeline__step timeline__step--complete">
                     Applied {{applicant.applicationTime | prettyDate}}
-                    {{applicant.applicationTime | timeAgo}}
+                    <span class="timeline__time-diff">{{applicant.applicationTime | timeTo}}</span>
                 </li>
                 <li class="timeline__step timeline__step--complete">
                     {# {{applicant.emailReminderSent}} #}
-                    Email reminder
+                    Email reminder sent
                 </li>
                 <li class="timeline__step">
                     {# {{applicant.smsReminderSent}} #}
                     SMS reminder
                 </li>
                 <li class="timeline__step">
-                    {{applicant.booking.startTime | prettyDate}}
+                    Interview on {{applicant.booking.startTime | prettyDate}}
+                    <span class="timeline__time-diff">{{applicant.booking.startTime | timeTo}}</span>
                 </li>
             </ol>
         </article>
@@ -47,7 +48,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Email</th>
-                        <td>{{applicant.email}} <a href="mailto:{{applicant.email}}">Email applicant</a></td>
+                        <td>{{applicant.email}} <a class="email-link" href="mailto:{{applicant.email}}">Email applicant</a></td>
                     </tr>
                     <tr>
                         <th scope="row">Phone</th>
@@ -71,7 +72,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Host branch</th>
-                        <td>{{applicant.booking.branch.name}} <a href="mailto:{{applicant.booking.branch.email}}">Email host branch</a></td>
+                        <td>{{applicant.booking.branch.name}} <a class="email-link" href="mailto:{{applicant.booking.branch.email}}">Email host branch</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -86,28 +87,32 @@
         <article class="block">
             <h2 class="block__title">Location</h2>
             <p>Based on their IP address, this person was in when they applied.</p>
-            <p class="small">IP address locations are nnot always accurate and shouldn't be relied on, especially for people using mobile internet connections.</p>
+            <p class="small">IP address locations are not always accurate and shouldn't be relied on, especially for people using mobile internet connections.</p>
         </article>
 
         <article class="block">
             <h2 class="block__title">More about them</h2>
-            <table class="details-table">
+            <table class="details-table details-table--bottom-margin">
                 <tbody>
                     <tr>
                         <th scope="row">Gender</th>
-                        <td>{{applicant.gender}}</td>
+                        <td>{{applicant.gender | noneGiven | safe}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Ethnic background</th>
-                        <td>{{applicantethnicBackground}}</td>
+                        <td>{{applicant.ethnicBackground | noneGiven | safe}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Age group</th>
-                        <td>{{applicant.ageRange}}</td>
+                        <td>{{applicant.ageRange | noneGiven | safe}}</td>
                     </tr>
+                </tbody>
+            </table>
+            <table class="details-table">
+                <tbody>
                     <tr>
                         <th scope="row">Accessibility requirements</th>
-                        <td>{{applicant.accessibilityRequirements}}</td>
+                        <td>{{applicant.accessibilityRequirements | noneGiven | safe}}</td>
                     </tr>
                 </tbody>
             </table>

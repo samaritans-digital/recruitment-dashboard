@@ -9,21 +9,21 @@
     <table class="applicants-table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Applied</th>
-                <th>Interview</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Applied</th>
+                <th scope="col">Interview</th>
                 {# <th>Interview done?</th> #}
             </tr>
         </thead>
         <tbody>
             {% for applicant in applicants %}
                 <tr>
-                    <td><a href="/applicant/{{applicant.enquiryId}}">{{applicant.firstName}} {{applicant.lastName}}</a></td>
+                    <td scope="row"><a href="/applicant/{{applicant.enquiryId}}">{{applicant.firstName}} {{applicant.lastName}}</a></td>
                     <td>{{applicant.email}}</td>
                     <td>{{applicant.phone}}</td>
-                    <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeAgo }}{% endif %}</td>
+                    <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeTo }}{% endif %}</td>
                     <td>{% if applicant.booking.startTime %}{{ applicant.booking.startTime | prettyDate }}{% endif %}</td>
                     {# <td>{{applicant.status}} {% if applicant.status %}<img src="/img/tick.svg" alt="Yes"/>{% endif%}</td> #}
                 </tr>

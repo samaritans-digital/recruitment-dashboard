@@ -102,7 +102,20 @@ p {
   font-size: 1.1em; }
 
 .page-header__breadcrumb-link {
-  color: inherit; }
+  color: inherit;
+  margin-right: 20px;
+  position: relative; }
+  .page-header__breadcrumb-link:after {
+    position: absolute;
+    top: 3px;
+    right: -15px;
+    height: 10px;
+    width: 7px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: "";
+    display: block;
+    background-image: url("/img/chevron-right.svg"); }
 
 .page-header__headline {
   font-family: "samaritans-webfont", Arial, sans-serif;
@@ -248,3 +261,80 @@ p {
     font-size: 1.1em; }
   .details-table th {
     width: 35%; }
+
+.timeline {
+  list-style: none; }
+
+.timeline__step {
+  margin-bottom: 50px;
+  padding-left: 60px;
+  position: relative; }
+  .timeline__step:first-of-type {
+    margin-top: 10px; }
+  .timeline__step:last-of-type {
+    margin-bottom: 10px; }
+    .timeline__step:last-of-type:after {
+      display: none; }
+  .timeline__step.timeline__step--complete:before {
+    content: "" !important;
+    background: #78C040;
+    background-image: url("/img/tick.svg");
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat; }
+  .timeline__step:before {
+    position: absolute;
+    left: 0px;
+    top: -10px;
+    content: "";
+    display: flex;
+    margin-right: 10px;
+    background: #ffffff;
+    border: 3px solid #78C040;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    color: #78C040;
+    font-family: "samaritans-webfont", Arial, sans-serif;
+    z-index: 999; }
+  .timeline__step:after {
+    position: absolute;
+    left: 19px;
+    top: 30px;
+    content: "";
+    display: block;
+    border-left: 3px dashed #78C040;
+    height: 200%;
+    z-index: 2; }
+  .timeline__step:nth-child(1):before {
+    content: "1"; }
+  .timeline__step:nth-child(2):before {
+    content: "2"; }
+  .timeline__step:nth-child(3):before {
+    content: "3"; }
+  .timeline__step:nth-child(4):before {
+    content: "4"; }
+
+.timeline__time-diff {
+  display: block;
+  color: rgba(51, 51, 51, 0.5); }
+
+.small {
+  font-size: 0.9em; }
+
+.none-given {
+  color: rgba(51, 51, 51, 0.5); }
+
+.email-link {
+  margin-left: 15px; }
+  .email-link:before {
+    content: "";
+    display: inline-block;
+    margin-right: 8px;
+    background-image: url("/img/mail.svg");
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    margin-bottom: -3px; }
