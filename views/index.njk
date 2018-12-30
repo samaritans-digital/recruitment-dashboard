@@ -41,8 +41,8 @@
     </table>
 
     <div class="pagination">
-        {% if page > 1 %} <a class="button pagination__button pagination__button--previous" href="/page/{{page - 1}}">Previous</a>{% endif %}   
-        <a class="button pagination__button pagination__button--next" href="/page/{{page + 1}}">Next</a>
+        {% if page > 1 %} <a class="button pagination__button pagination__button--previous" onclick="window.location='/page/{{page - 1}}'+window.location.search;">Previous</a>{% endif %}   
+        <a class="button pagination__button pagination__button--next" onclick="window.location='/page/{{page + 1}}'+window.location.search;">Next</a>
     </div>
 
 </main>
