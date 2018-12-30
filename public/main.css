@@ -331,6 +331,8 @@ main {
       grid-column-gap: 30px; } }
   .grid.grid--with-sidebar {
     grid-template-columns: 2fr 1fr; }
+  .grid.grid--three-columns {
+    grid-template-columns: 1fr 1fr 1fr; }
   .grid.grid--bottom-margin {
     margin-bottom: 60px; } }
 
@@ -518,3 +520,23 @@ main {
 
 .reschedule-modal__button {
   margin-top: 20px; }
+
+.kpi__stat {
+  color: #78C040;
+  font-family: "samaritans-webfont", Arial, sans-serif;
+  font-size: 1.7em;
+  display: block;
+  margin-bottom: 5px; }
+  @media screen and (min-width: 992px) {
+    .kpi__stat {
+      font-size: 2em; } }
+  .kpi__stat:before, .kpi__stat:after {
+    display: none; }
+  .kpi__stat.kpi__stat--orange {
+    color: #DE772C; }
+  .kpi__stat.kpi__stat--purple {
+    color: #563E71; }
+
+.kpi__caption {
+  font-style: normal;
+  font-size: 0.9em; }

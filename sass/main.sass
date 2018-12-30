@@ -328,6 +328,8 @@ main
             grid-column-gap: 30px
         &.grid--with-sidebar
             grid-template-columns: 2fr 1fr    
+        &.grid--three-columns
+            grid-template-columns: 1fr 1fr 1fr  
         &.grid--bottom-margin
             margin-bottom: 60px
         
@@ -535,3 +537,24 @@ main
 
 .reschedule-modal__button
     margin-top: 20px
+
+
+// KPIs
+.kpi__stat
+    color: $green
+    font-family: $display-text
+    font-size: 1.7em
+    display: block
+    margin-bottom: 5px
+    @media screen and (min-width: 992px)
+        font-size: 2em
+    &:before, &:after
+        display: none
+    &.kpi__stat--orange
+        color: $orange
+    &.kpi__stat--purple
+        color: $purple
+
+.kpi__caption
+    font-style: normal
+    font-size: 0.9em
