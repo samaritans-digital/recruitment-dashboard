@@ -1,6 +1,7 @@
 {% extends "_layout.njk" %}
 
 {% block title %}{{applicant.firstName}} {{applicant.lastName}}{% endblock %}
+{% block headerModifierClass %}page-header--overlap{% endblock %}
 {% block breadcrumbs %}
     <li class="page-header__breadcrumb"><a class="page-header__breadcrumb-link" href="/">Dashboard</a></li>
     <li class="page-header__breadcrumb">Applicant details</li>

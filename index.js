@@ -27,7 +27,7 @@ server.set("view engine", "njk")
 server.use("/", router)
 server.use(express.static("public"))
 server.use((req, res)=>{
-    res.status(404).send("Route not found")
+    res.status(404).render("404.njk")
 })
 
 // Listen for connections

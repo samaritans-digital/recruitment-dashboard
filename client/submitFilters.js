@@ -8,14 +8,8 @@ export default () => {
 
         // When something is changed, trigger reload
         form.addEventListener('change', ()=>{
-
-            // const currentUrl = window.location
-
-            window.location.search = '?sort=soonest'
-
-            // alert(window.location.search)
+            window.location = `/?sort=${sort.value}&branch=${branch.value}`
         })
-
 
     }
 

@@ -1,19 +1,23 @@
 {% extends "_layout.njk" %}
-{% block headline %}Application dashboard{% if page > 1 %}, page {{ page }}{% endif %}{% endblock %}
+{% block headerModifierClass %}page-header--overlap{% endblock %}
+{% block headline %}Application dashboard{% endblock %}
 {% block lede %}See how your branch is performing in recruitment, relative to others in the region and the country.{% endblock %}
 {% block main %}
 
 <main class="block block--bottom-margin">
-    <h2 class="block__title">Recent applicants</h2>
+    <h2 class="block__title">{% if sortQuery === "soonest" %}Upcoming interviews{% else %}Recent applicants{% endif %}{% if page > 1 %}, page {{ page }}{% endif %}</h2>
 
     <form class="applicants-filters">
         <select class="applicants-filters__select" name="branch">
-            <option value="">All branches</option>
+            <option value="" {% if branchQuery === "" %}selected{% endif %}>All branches</option>
+            <option value="leeds" {% if branchQuery === "leeds" %}selected{% endif %}>Leeds</option>
+            <option value="sheffield" {% if branchQuery === "sheffield" %}selected{% endif %}>Sheffield</option>
+            <option value="manchester" {% if branchQuery === "manchester" %}selected{% endif %}>Manchester</option>
         </select>
 
         <select class="applicants-filters__select" name="sort">
-            <option value="most-recent">Sort by most recent</option>
-            <option value="soonest-interview">Sort by soonest interview</option>
+            <option value="" {% if sortQuery === "" %}selected{% endif %}>Sort by newest</option>
+            <option value="soonest" {% if sortQuery === "soonest" %}selected{% endif %}>Sort by soonest interview</option>
         </select>
     </form>
 
@@ -21,8 +25,7 @@
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone</th>
+                <th scope="col">Chosen branch</th>
                 <th scope="col">Applied</th>
                 <th scope="col">Interview</th>
             </tr>
@@ -31,8 +34,7 @@
             {% for applicant in applicants %}
                 <tr>
                     <td scope="row"><a href="/applicant/{{applicant.enquiryId}}">{{applicant.firstName}} {{applicant.lastName}}</a></td>
-                    <td>{{applicant.email}}</td>
-                    <td>{{applicant.phone}}</td>
+                    <td>{{applicant.branchId}}</td>
                     <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeTo }}{% endif %}</td>
                     <td>{% if applicant.booking.startTime %}{{ applicant.booking.startTime | prettyDate }}{% endif %}</td>
                 </tr>
@@ -42,7 +44,7 @@
 
     <div class="pagination">
         {% if page > 1 %} <a class="button pagination__button pagination__button--previous" onclick="window.location='/page/{{page - 1}}'+window.location.search;">Previous</a>{% endif %}   
-        <a class="button pagination__button pagination__button--next" onclick="window.location='/page/{{page + 1}}'+window.location.search;">Next</a>
+        {% if not lastPage %}<a class="button pagination__button pagination__button--next" onclick="window.location='/page/{{page + 1}}'+window.location.search;">Next</a>{% endif %}
     </div>
 
 </main>

@@ -11,22 +11,42 @@ const calculatePage = (rawPage)=>{
     return (rawPage) ? parseInt(rawPage) : 1
 }
 
+// Build filters
+const buildWhereQuery = (sort, branch) => {
+    let query = {}
+    // If sort is specified, filter out past interviews
+    if (sort === "soonest") {
+        query.booking = { 
+            startTime: { [Op.gte]: new Date() }
+        }
+    }
+    // If branch is specified, filter by it here
+    if (branch) {
+        query.branchId = branch
+    }
+    return query
+}
+
+
 // Get list of recent applicants
 const index = (req, res, next)=>{
     Enquiry.findAll({
-        // Order by application time or soonest interview
         order: (req.query.sort === "soonest")? [["booking.startTime", "ASC"]] : [["applicationTime", "DESC"]],
-        where: (req.query.sort === "soonest")? { booking: { startTime: {[Op.gte]: new Date()} } } : false,
+        where: buildWhereQuery(req.query.sort, req.query.branch),
         limit: 10,
         offset: calculateOffset(req.params.page),
         // raw: true // This seems to break virtual columns
     })
         .then((applicants)=>{
             if(applicants.length > 0){
+                // applicants.pop()
                 res.render("index", {
                     error: false,
                     applicants: applicants,
-                    page: calculatePage(req.params.page)
+                    page: calculatePage(req.params.page),
+                    branchQuery: req.query.branch,
+                    sortQuery: req.query.sort,
+                    lastPage: (applicants.length < 10)
                 })
             } else {
                 next()

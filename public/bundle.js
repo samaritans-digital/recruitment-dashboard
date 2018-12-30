@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sub
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  if (document.querySelector(\".applicants-filters\")) {\n    // Grab DOM elements\n    var form = document.querySelector(\".applicants-filters\");\n    var sort = form.querySelector(\"select[name=sort]\");\n    var branch = form.querySelector(\"select[name=branch]\"); // When something is changed, trigger reload\n\n    form.addEventListener('change', function () {\n      // const currentUrl = window.location\n      window.location.search = '?sort=soonest'; // alert(window.location.search)\n    });\n  }\n});\n\n//# sourceURL=webpack:///./client/submitFilters.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  if (document.querySelector(\".applicants-filters\")) {\n    // Grab DOM elements\n    var form = document.querySelector(\".applicants-filters\");\n    var sort = form.querySelector(\"select[name=sort]\");\n    var branch = form.querySelector(\"select[name=branch]\"); // When something is changed, trigger reload\n\n    form.addEventListener('change', function () {\n      window.location = \"/?sort=\".concat(sort.value, \"&branch=\").concat(branch.value);\n    });\n  }\n});\n\n//# sourceURL=webpack:///./client/submitFilters.js?");
 
 /***/ })
 
