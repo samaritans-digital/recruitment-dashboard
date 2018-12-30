@@ -1,10 +1,10 @@
 {% extends "_layout.njk" %}
-{% block headline %}Application dashboard{% endblock %}
+{% block headline %}Application dashboard{% if page %}, page {{ page }}{% endif %}{% endblock %}
 {% block lede %}See how your branch is performing in recruitment, relative to others in the region and the country.{% endblock %}
 {% block main %}
 
 <main class="block block--bottom-margin">
-    <h2 class="block__title">Recent applicants{% if page %}, page {{ page }}{% endif %}</h2>
+    <h2 class="block__title">Recent applicants</h2>
 
     <form class="applicants-filters">
         <select class="applicants-filters__select" name="branch">

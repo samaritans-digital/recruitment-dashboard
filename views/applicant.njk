@@ -16,21 +16,52 @@
         <article class="block">
             <ol class="timeline">
                 <li class="timeline__step timeline__step--complete">
-                    Applied {{applicant.applicationTime | prettyDate}}
-                    <span class="timeline__time-diff">{{applicant.applicationTime | timeTo}}</span>
+                    <p>Applied {{applicant.applicationTime | prettyDate}}</p>
+                    <span class="timeline__small small">{{applicant.applicationTime | timeTo}}</span>
                 </li>
-                <li class="timeline__step timeline__step--complete">
-                    {# {{applicant.emailReminderSent}} #}
-                    Email reminder sent
-                </li>
-                <li class="timeline__step">
-                    {# {{applicant.smsReminderSent}} #}
-                    SMS reminder
-                </li>
-                <li class="timeline__step timeline__step--inactive">
-                    Interview on {{applicant.booking.startTime | prettyDate}}
-                    <span class="timeline__time-diff">{{applicant.booking.startTime | timeTo}}</span>
-                </li>
+
+                {% if applicant.booking %}
+
+                    {% if applicant.sentMailReminder%}
+                        <li class="with-tooltip timeline__step timeline__step--complete" title="Email reminders are sent a week before the interview.">
+                            <p>Email reminder sent</p>
+                        </li>
+                    {% elif interviewComplete %}
+                    {% else %}
+                        <li class="with-tooltip timeline__step" title="Email reminder will be sent one week before the interview">
+                            <p>Email reminder not yet sent</p>
+                        </li>
+                    {% endif %}
+
+                    {% if applicant.sentSmsReminder %}
+                        <li class="with-tooltip timeline__step timeline__step--complete" title="SMS reminders are sent 24 hours before the interview.">
+                            <p>SMS reminder sent</p>
+                        </li>
+                    {% elif interviewComplete %}
+                    {% else %}
+                        <li class="with-tooltip timeline__step" title="SMS reminder will be sent one day before the interview">
+                            <p>SMS reminder not yet sent</p>
+                        </li>
+                    {% endif %}
+
+                    {% if interviewComplete %}
+                        <li class="timeline__step timeline__step--complete">
+                            <p>Interviewed {{applicant.booking.startTime | prettyDate}}</p>
+                            <span class="timeline__small small">{{applicant.booking.startTime | timeTo}}</span>
+                        </li>
+                    {% else %}
+                        <li class="timeline__step">
+                            <p>Interview on {{applicant.booking.startTime | prettyDate}}</p>
+                            <span class="timeline__small small">{{applicant.booking.startTime | timeTo}}</span>
+                        </li>
+                    {% endif %}
+
+                {% else %}
+                    <li class="timeline__step timeline__step--inactive">
+                        <p>No interview booked</p>
+                    </li>
+                {% endif %}
+
             </ol>
         </article>
 
@@ -86,6 +117,9 @@
                         </tr>
                     </tbody>
                 </table>
+                {% if interviewComplete %}
+                    <p class="small">The booked interview slot is in the past, but you can still reschedule it to a future date.</p>
+                {% endif %}
                 <button class="button">Reschedule or cancel</button>
             {% else %}
                 <span class="none-given">No interview booked.</span>
@@ -127,6 +161,7 @@
                                     {% if applicant.contactByPhone %}<li>Phone</li>{% endif %}
                                 </ul>
                             {% endif %}
+
                         </td>
                     </tr>
                 </tbody>
@@ -163,8 +198,12 @@
 
         <article class="block">
             <h2 class="block__title">Location</h2>
-            <p>Based on their IP address, this person was in <strong>{{location.city}}, {{location.country_name}}</strong> when they applied.</p>
-            <p class="small">IP address locations are not always accurate and shouldn't be relied on, especially for people using mobile internet connections.</p>
+            {% if location.city %}
+                <p>Based on their IP address, this person was in <strong>{{location.city}}, {{location.country_name}}</strong> when they applied.</p>
+                <p class="small">IP address locations are not always accurate and shouldn't be relied on, especially for people using mobile internet connections.</p>
+            {% else %}
+                <p class="none-given">No location recorded.</p>
+            {% endif %}
         </article>
 
     </aside>

@@ -17,6 +17,11 @@ a
 
 p
     line-height: 1.5em
+    margin-bottom: 15px
+
+// IE fix
+main
+  display: block
 
 // Fixed width container
 .container
@@ -185,10 +190,6 @@ p
     border-spacing: 0px
     border-collapse: collapse
     margin-bottom: 35px
-
-    img
-        max-height: 20px
-
     thead
         background: $brown
         th
@@ -197,13 +198,30 @@ p
             color: transparentize($grey, 0.5)
     tr
         border-bottom: 1px solid transparentize($grey, 0.9)
-
     td
         padding: 15px 12px 12px 12px
         font-size: 0.9em
         &:first-of-type
             font-weight: bold
 
+    // Hide three columns
+    th:last-of-type, td:last-of-type
+        text-align: right
+    th:nth-of-type(2), td:nth-of-type(2)
+        display: none
+    th:nth-of-type(3), td:nth-of-type(3)
+        display: none
+    th:nth-of-type(4), td:nth-of-type(4)
+        display: none
+    @media screen and (min-width: 600px)
+        th:last-of-type, td:last-of-type
+            text-align: left
+        th:nth-of-type(2), td:nth-of-type(2)
+            display: table-cell
+        th:nth-of-type(3), td:nth-of-type(3)
+            display: table-cell
+        th:nth-of-type(4), td:nth-of-type(4)
+            display: table-cell
 
 // Button
 .button
@@ -269,47 +287,59 @@ p
     th
         padding: 5px 15px 5px 0px
 
+    ul
+        list-style: none
+
 
 // Timeline
 .timeline
     list-style: none
+
 .timeline__step
-    margin-bottom: 50px
-    padding-left: 60px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    min-height: 60px
     position: relative
-    cursor: help
-    &:first-of-type
-        margin-top: 10px
-    &:last-of-type
-        margin-bottom: 10px
-        &:after
-            display: none
+    padding-left: 60px
+
+    p
+        margin-bottom: 0px
+
+    // Circle badges
     &:before
-        position: absolute
-        left: 0px
-        top: -10px
         content: ""
-        display: flex
-        margin-right: 10px
-        background: $white
+        height: 35px
+        width: 35px
+        top: 50%
+        transform: translateY(-50%)
         border: 3px solid $green
         border-radius: 100%
-        width: 35px
-        height: 35px
+        position: absolute
+        left: 0px
+        display: flex
         justify-content: center
         align-items: center
-        color: $green
         font-family: $display-text
-        z-index: 999
+        font-size: 1.3em
+        color: $green
+        background: $white
+        z-index: 2
+
+    // Dotted line connectors
     &:after
         position: absolute
         left: 19px
-        top: 30px
+        bottom: 30px
         content: ""
         display: block
-        border-left: 3px dashed $green
-        height: 200%
-        z-index: 2
+        border-left: 3px solid $green
+        height: 60px
+        z-index: 1
+    &:first-of-type:after
+        display: none
+
+    // Numbers
     &:nth-child(1):before
         content: "1"
     &:nth-child(2):before
@@ -318,6 +348,8 @@ p
         content: "3"
     &:nth-child(4):before
         content: "4"
+
+    // Different states
     &.timeline__step--complete
         &:before
             content: ""
@@ -331,16 +363,25 @@ p
             content: "?"
             border-color: transparentize($grey, 0.75)
             color: transparentize($grey, 0.75)
+        &:after
+            border-color: transparentize($grey, 0.75)
 
 
-.timeline__time-diff
-    display: block
+
+
+
+.timeline__small
     color: transparentize($grey, 0.5)
+    &:first-letter
+        text-transform: capitalize
 
 
 // Small help text
 .small
     font-size: 0.9em
+
+.with-tooltip
+    cursor: help
 
 .none-given
     color: transparentize($grey, 0.5)

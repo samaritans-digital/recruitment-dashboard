@@ -5,6 +5,9 @@ const logger = require("morgan")
 const router = require("./routers/router")
 const filters = require("./utils/nunjucksFilters")
 
+// Load env
+require("dotenv").config()
+
 // Init express
 const server = express()
 // server.use(logger("dev"))
