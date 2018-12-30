@@ -90,11 +90,11 @@
 /*!*******************************!*\
   !*** ./client/launchModal.js ***!
   \*******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  if (document.querySelector('#launch-modal')) {\n    var button = document.querySelector('#launch-modal');\n    var overlay = document.querySelector('.overlay');\n    var modal = document.querySelector('.reschedule-modal');\n    button.addEventListener('click', function () {\n      overlay.classList.add('visible');\n      modal.classList.add('visible');\n      document.body.style.overflow = 'hidden';\n    }); // Respond to overlay click\n\n    overlay.addEventListener('click', function () {\n      closeModal();\n    }); // Respond to ESC keypress\n\n    document.addEventListener('keyup', function (e) {\n      if (e.keyCode === 27) {\n        closeModal();\n      }\n    });\n\n    var closeModal = function closeModal() {\n      overlay.classList.remove('visible');\n      modal.classList.remove('visible');\n      document.body.style.overflow = '';\n    };\n  }\n});\n\n//# sourceURL=webpack:///./client/launchModal.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = () => {\n  if (document.querySelector('#launch-modal')) {\n    const button = document.querySelector('#launch-modal');\n    const overlay = document.querySelector('.overlay');\n    const modal = document.querySelector('.reschedule-modal');\n    button.addEventListener('click', () => {\n      overlay.classList.add('visible');\n      modal.classList.add('visible');\n      document.body.style.overflow = 'hidden';\n    }); // Respond to overlay click\n\n    overlay.addEventListener('click', () => {\n      closeModal();\n    }); // Respond to ESC keypress\n\n    document.addEventListener('keyup', e => {\n      if (e.keyCode === 27) {\n        closeModal();\n      }\n    });\n\n    const closeModal = () => {\n      overlay.classList.remove('visible');\n      modal.classList.remove('visible');\n      document.body.style.overflow = '';\n    };\n  }\n};\n\n//# sourceURL=webpack:///./client/launchModal.js?");
 
 /***/ }),
 
@@ -102,11 +102,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /*!************************!*\
   !*** ./client/main.js ***!
   \************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _submitFilters__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./submitFilters */ \"./client/submitFilters.js\");\n/* harmony import */ var _launchModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./launchModal */ \"./client/launchModal.js\");\n\n\nwindow.addEventListener(\"DOMContentLoaded\", function () {\n  Object(_submitFilters__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n  Object(_launchModal__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n});\n\n//# sourceURL=webpack:///./client/main.js?");
+eval("\n\nvar _submitFilters = __webpack_require__(/*! ./submitFilters */ \"./client/submitFilters.js\");\n\nvar _submitFilters2 = _interopRequireDefault(_submitFilters);\n\nvar _launchModal = __webpack_require__(/*! ./launchModal */ \"./client/launchModal.js\");\n\nvar _launchModal2 = _interopRequireDefault(_launchModal);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nwindow.addEventListener(\"DOMContentLoaded\", () => {\n  (0, _submitFilters2.default)();\n  (0, _launchModal2.default)();\n});\n\n//# sourceURL=webpack:///./client/main.js?");
 
 /***/ }),
 
@@ -114,11 +114,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sub
 /*!*********************************!*\
   !*** ./client/submitFilters.js ***!
   \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  if (document.querySelector(\".applicants-filters\")) {\n    // Grab DOM elements\n    var form = document.querySelector(\".applicants-filters\");\n    var sort = form.querySelector(\"select[name=sort]\");\n    var branch = form.querySelector(\"select[name=branch]\"); // When something is changed, trigger reload\n\n    form.addEventListener('change', function () {\n      window.location = \"/?sort=\".concat(sort.value, \"&branch=\").concat(branch.value);\n    });\n  }\n});\n\n//# sourceURL=webpack:///./client/submitFilters.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = () => {\n  if (document.querySelector(\".applicants-filters\")) {\n    // Grab DOM elements\n    const form = document.querySelector(\".applicants-filters\");\n    const sort = form.querySelector(\"select[name=sort]\");\n    const branch = form.querySelector(\"select[name=branch]\"); // When something is changed, trigger reload\n\n    form.addEventListener('change', () => {\n      window.location = `/?sort=${sort.value}&branch=${branch.value}`;\n    });\n  }\n};\n\n//# sourceURL=webpack:///./client/submitFilters.js?");
 
 /***/ })
 

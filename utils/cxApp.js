@@ -8,6 +8,15 @@ const getApplication = async (enquiryId) => {
     return data
 }
 
+// Get unbooked interview slots by branch ID
+const getEvents = async (branchId) => {
+    const endpoint = `${process.env.FRONTEND_HOST}/volunteer/api/v1/interview-slots/${branchId}`
+    const response = await fetch(endpoint)
+    const data = await response.json()
+    return data
+}
+
 module.exports = {
-    getApplication: getApplication
+    getApplication: getApplication,
+    getEvents: getEvents
 }

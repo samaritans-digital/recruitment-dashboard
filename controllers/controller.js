@@ -30,7 +30,8 @@ const buildWhereQuery = (sort, branch) => {
 
 
 // Get list of recent applicants
-const index = (req, res, next)=>{
+const index = (req, res, next) => {
+
     Enquiry.findAll({
         order: (req.query.sort === "soonest")? [["booking.startTime", "ASC"]] : [["applicationTime", "DESC"]],
         where: buildWhereQuery(req.query.sort, req.query.branch),
@@ -48,6 +49,7 @@ const index = (req, res, next)=>{
                     lastPage = false
                     applicants.pop()
                 }
+                // Render view
                 res.render("index", {
                     error: false,
                     applicants: applicants,
