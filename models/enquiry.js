@@ -3,12 +3,12 @@ module.exports = (sequelize, Sequelize) => {
     var Enquiry = sequelize.define("Enquiry", {
 
         // Virtual columns
-        status: {
-            type: Sequelize.VIRTUAL,
-            get: function () {
-                return true
-            }
-        },
+        // status: {
+        //     type: Sequelize.VIRTUAL,
+        //     get: function () {
+        //         return true
+        //     }
+        // },
 
         firstName: Sequelize.STRING,
         lastName: Sequelize.STRING,

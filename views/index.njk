@@ -25,7 +25,6 @@
                 <th scope="col">Phone</th>
                 <th scope="col">Applied</th>
                 <th scope="col">Interview</th>
-                {# <th>Interview done?</th> #}
             </tr>
         </thead>
         <tbody>
@@ -36,7 +35,6 @@
                     <td>{{applicant.phone}}</td>
                     <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeTo }}{% endif %}</td>
                     <td>{% if applicant.booking.startTime %}{{ applicant.booking.startTime | prettyDate }}{% endif %}</td>
-                    {# <td>{{applicant.status}} {% if applicant.status %}<img src="/img/tick.svg" alt="Yes"/>{% endif%}</td> #}
                 </tr>
             {% endfor %}
         </tbody>

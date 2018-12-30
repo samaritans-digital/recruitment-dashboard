@@ -13,7 +13,8 @@ const calculatePage = (rawPage)=>{
 // Get list of recent applicants
 const index = (req, res)=>{
     Enquiry.findAll({
-        order: [["applicationTime", "DESC"]],
+        // Order by application time or soonest interview
+        order: (req.query.order === "soonest")? [["bookingDate", "ASC"]] : [["applicationTime", "DESC"]],
         limit: 10,
         offset: calculateOffset(req.params.page),
         // raw: true // This seems to break virtual columns

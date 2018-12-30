@@ -272,7 +272,11 @@ main {
     margin-bottom: 10px; }
   @media screen and (min-width: 768px) {
     .applicants-filters__select {
-      width: 190px; } }
+      width: 190px; }
+      .applicants-filters__select:first-of-type {
+        margin-bottom: 0px; }
+      .applicants-filters__select:last-of-type {
+        margin-right: 0px; } }
 
 @supports (display: grid) {
   @media screen and (min-width: 768px) {
