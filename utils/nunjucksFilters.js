@@ -24,9 +24,9 @@ module.exports = (env) => {
     // Pretty up the role field
     env.addFilter("prettyRole", (rawRole) => {
         if(rawRole === "listening-volunteer"){
-            return "listening volunteer"
+            return "Listening volunteer"
         } else {
-            return "branch volunteer"
+            return "Branch volunteer"
         }
     })
 

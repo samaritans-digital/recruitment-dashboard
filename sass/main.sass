@@ -261,9 +261,13 @@ p
     td, th
         padding: 5px 0px
         font-size: 1.1em
-
+        text-align: left
+        vertical-align: top
+        width: 50%
+        &.break-all
+            word-break: break-all
     th
-        width: 35%
+        padding: 5px 15px 5px 0px
 
 
 // Timeline
@@ -273,24 +277,13 @@ p
     margin-bottom: 50px
     padding-left: 60px
     position: relative
+    cursor: help
     &:first-of-type
         margin-top: 10px
     &:last-of-type
         margin-bottom: 10px
         &:after
             display: none
-    &.timeline__step--complete
-        &:before
-            content: "" !important
-            background: $green
-            background-image: url("/img/tick.svg")
-            background-size: 15px
-            background-position: center
-            background-repeat: no-repeat
-    &.timeline__step--inactive
-        &:before
-            border-color: transparentize($grey, 0.75)
-            color: transparentize($grey, 0.75)
     &:before
         position: absolute
         left: 0px
@@ -325,6 +318,20 @@ p
         content: "3"
     &:nth-child(4):before
         content: "4"
+    &.timeline__step--complete
+        &:before
+            content: ""
+            background: $green
+            background-image: url("/img/tick.svg")
+            background-size: 15px
+            background-position: center
+            background-repeat: no-repeat
+    &.timeline__step--inactive
+        &:before
+            content: "?"
+            border-color: transparentize($grey, 0.75)
+            color: transparentize($grey, 0.75)
+
 
 .timeline__time-diff
     display: block
@@ -341,7 +348,9 @@ p
 
 // Email link
 .email-link
-    margin-left: 15px
+    display: block
+    margin: 5px 0px
+    // margin-left: 15px
     &:before
         content: ""
         display: inline-block

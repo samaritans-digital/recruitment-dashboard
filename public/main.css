@@ -258,9 +258,14 @@ p {
     margin-bottom: 35px; }
   .details-table td, .details-table th {
     padding: 5px 0px;
-    font-size: 1.1em; }
+    font-size: 1.1em;
+    text-align: left;
+    vertical-align: top;
+    width: 50%; }
+    .details-table td.break-all, .details-table th.break-all {
+      word-break: break-all; }
   .details-table th {
-    width: 35%; }
+    padding: 5px 15px 5px 0px; }
 
 .timeline {
   list-style: none; }
@@ -268,23 +273,14 @@ p {
 .timeline__step {
   margin-bottom: 50px;
   padding-left: 60px;
-  position: relative; }
+  position: relative;
+  cursor: help; }
   .timeline__step:first-of-type {
     margin-top: 10px; }
   .timeline__step:last-of-type {
     margin-bottom: 10px; }
     .timeline__step:last-of-type:after {
       display: none; }
-  .timeline__step.timeline__step--complete:before {
-    content: "" !important;
-    background: #78C040;
-    background-image: url("/img/tick.svg");
-    background-size: 15px;
-    background-position: center;
-    background-repeat: no-repeat; }
-  .timeline__step.timeline__step--inactive:before {
-    border-color: rgba(51, 51, 51, 0.25);
-    color: rgba(51, 51, 51, 0.25); }
   .timeline__step:before {
     position: absolute;
     left: 0px;
@@ -319,6 +315,17 @@ p {
     content: "3"; }
   .timeline__step:nth-child(4):before {
     content: "4"; }
+  .timeline__step.timeline__step--complete:before {
+    content: "";
+    background: #78C040;
+    background-image: url("/img/tick.svg");
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat; }
+  .timeline__step.timeline__step--inactive:before {
+    content: "?";
+    border-color: rgba(51, 51, 51, 0.25);
+    color: rgba(51, 51, 51, 0.25); }
 
 .timeline__time-diff {
   display: block;
@@ -332,7 +339,8 @@ p {
   font-style: italic; }
 
 .email-link {
-  margin-left: 15px; }
+  display: block;
+  margin: 5px 0px; }
   .email-link:before {
     content: "";
     display: inline-block;

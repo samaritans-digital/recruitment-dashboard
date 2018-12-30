@@ -6,6 +6,17 @@
 <main class="block block--bottom-margin">
     <h2 class="block__title">Recent applicants{% if page %}, page {{ page }}{% endif %}</h2>
 
+    <form class="applicants-filters">
+        <select class="applicants-filters__select" name="branch">
+            <option value="">All branches</option>
+        </select>
+
+        <select class="applicants-filters__select" name="sort">
+            <option value="most-recent">Most recent</option>
+            <option value="soonest-interview">Soonest interview</option>
+        </select>
+    </form>
+
     <table class="applicants-table">
         <thead>
             <tr>

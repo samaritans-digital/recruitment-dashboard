@@ -80,6 +80,10 @@
                                 </td>
                             </tr>
                         {% endif %}
+                        <tr>
+                            <th scope="row">For role</th>
+                            <td>{{applicant.role | prettyRole}}</td>
+                        </tr>
                     </tbody>
                 </table>
                 <button class="button">Reschedule or cancel</button>
@@ -101,21 +105,27 @@
                     <tr>
                         <th scope="row">This person wants to hear about...</th>
                         <td>
-                            {% if applicant.contactAboutPeopleInNeed %}Vital work{% endif %}
-                            {% if applicant.contactFundraising %}Fundraising{% endif %}
                             {% if not applicant.contactFundraising and not applicant.contactAboutPeopleInNeed %}
                                 <span class="none-given">None given</span>
+                            {% else %}
+                                <ul>
+                                    {% if applicant.contactAboutPeopleInNeed %}<li>Vital work</li>{% endif %}
+                                    {% if applicant.contactFundraising %}<li>Fundraising</li>{% endif %}
+                                </ul>
                             {% endif %}
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">By...</th>
                         <td>
-                            {% if applicant.contactByEmail %}Email{% endif %}
-                            {% if applicant.contactBySms %}SMS{% endif %}
-                            {% if applicant.contactByPhone %}Phone{% endif %}
                             {% if not applicant.contactByEmail and not applicant.contactBySms and not applicant.contactByPhone %}
                                 <span class="none-given">None given</span>
+                            {% else %}
+                                <ul>
+                                    {% if applicant.contactByEmail %}<li>Email</li>{% endif %}
+                                    {% if applicant.contactBySms %}<li>SMS</li>{% endif %}
+                                    {% if applicant.contactByPhone %}<li>Phone</li>{% endif %}
+                                </ul>
                             {% endif %}
                         </td>
                     </tr>
@@ -133,7 +143,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Ethnic background</th>
-                        <td>{{applicant.ethnicBackground | noneGiven | safe}}</td>
+                        <td class="break-all">{{applicant.ethnicBackground | noneGiven | safe}}</td>
                     </tr>
                     <tr>
                         <th scope="row">Age group</th>
