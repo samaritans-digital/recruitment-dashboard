@@ -11,9 +11,9 @@
         <label for="branch" class="visually-hidden">Branches to display</label>
         <select class="applicants-filters__select" name="branch">
             <option value="" {% if branchQuery === "" %}selected{% endif %}>All branches</option>
-            <option value="leeds" {% if branchQuery === "leeds" %}selected{% endif %}>Leeds</option>
-            <option value="sheffield" {% if branchQuery === "sheffield" %}selected{% endif %}>Sheffield</option>
-            <option value="manchester" {% if branchQuery === "manchester" %}selected{% endif %}>Manchester</option>
+            {% for branch in branches %}
+                <option value="{{ branch.id }}" {% if branchQuery === branch.id %}selected{% endif %}>{{ branch.name }}</option>
+            {% endfor %}
         </select>
 
         <label for="sort" class="visually-hidden">Sort results</label>
@@ -35,8 +35,8 @@
         <tbody>
             {% for applicant in applicants %}
                 <tr>
-                    <td scope="row"><a href="/applicant/{{applicant.enquiryId}}">{{applicant.firstName}} {{applicant.lastName}}</a></td>
-                    <td>{{applicant.branchId}}</td>
+                    <th scope="row"><a href="/applicant/{{applicant.enquiryId}}">{{applicant.firstName}} {{applicant.lastName}}</a></th>
+                    <td>{{applicant.branchName}}</td>
                     <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeTo }}{% endif %}</td>
                     <td>{% if applicant.booking.startTime %}{{ applicant.booking.startTime | prettyDate }}{% endif %}</td>
                 </tr>

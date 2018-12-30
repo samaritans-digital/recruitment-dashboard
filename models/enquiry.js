@@ -1,14 +1,17 @@
 "use strict"
+
+const branchNameFromId = require("../utils/branchNameFromId")
+
 module.exports = (sequelize, Sequelize) => {
     var Enquiry = sequelize.define("Enquiry", {
 
         // Virtual columns
-        // status: {
-        //     type: Sequelize.VIRTUAL,
-        //     get: function () {
-        //         return true
-        //     }
-        // },
+        branchName: {
+            type: Sequelize.VIRTUAL,
+            get: function () {
+                return branchNameFromId(this.getDataValue('branchId'))
+            }
+        },
 
         firstName: Sequelize.STRING,
         lastName: Sequelize.STRING,

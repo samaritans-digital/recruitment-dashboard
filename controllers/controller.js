@@ -1,5 +1,6 @@
 const { Op } = require("sequelize")
 const Enquiry = require("../models").Enquiry
+const branchNames = require("../branch-names.json")
 
 // Helper function to work out offsets from pages
 const calculateOffset = (page)=>{
@@ -50,6 +51,7 @@ const index = (req, res, next)=>{
                 res.render("index", {
                     error: false,
                     applicants: applicants,
+                    branches: branchNames,
                     page: calculatePage(req.params.page),
                     branchQuery: req.query.branch,
                     sortQuery: req.query.sort,

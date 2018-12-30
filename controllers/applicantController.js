@@ -1,5 +1,6 @@
 const cxApp = require("../utils/cxApp")
 const ipStack = require("../utils/ipstack")
+const branchNameFromId = require("../utils/branchNameFromId")
 
 // Helper function to work out whether interview is in past
 const isInterviewComplete = (applicant) => {
@@ -14,11 +15,10 @@ const isInterviewComplete = (applicant) => {
 const index = async (req, res, next) => {
     try {
         const applicant = await cxApp.getApplication(req.params.enquiryId)
-        const branch = await cxApp.getBranch(applicant.branchId)
         const location = await ipStack(applicant.ip)
         res.render("applicant.njk", {
             applicant: applicant,
-            branch: branch.branch,
+            branch: branchNameFromId(applicant.branchId),
             location: location,
             interviewComplete: isInterviewComplete(applicant)
         })
