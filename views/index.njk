@@ -62,6 +62,9 @@
                     <td>{{applicant.branchName}}</td>
                     <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeTo }}{% endif %}</td>
                     <td>{% if applicant.booking.startTime %}{{ applicant.booking.startTime | prettyDate }}{% endif %}</td>
+                
+                    <td>{{applicant.waitingTime}}</td>
+                
                 </tr>
             {% endfor %}
         </tbody>

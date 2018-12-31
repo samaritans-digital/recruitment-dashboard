@@ -1,3 +1,5 @@
+const moment = require("moment")
+
 "use strict"
 
 const branchNameFromId = require("../utils/branchNameFromId")
@@ -10,6 +12,16 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.VIRTUAL,
             get: function () {
                 return branchNameFromId(this.getDataValue('branchId'))
+            }
+        },
+        waitingTime: {
+            type: Sequelize.VIRTUAL,
+            get: function () {
+                try {
+                    return  moment(this.getDataValue('booking').startTime).diff(moment(), 'days')
+                } catch(e) {
+                    return false
+                }
             }
         },
 
