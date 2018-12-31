@@ -15,7 +15,7 @@ const getKpis = (req, res, next) => {
         .then((data)=>{
             console.log(data)
             res.status(200).json({
-                applicants: data[0],
+                applicants: data[0].count,
                 unbookedSlots: "",
                 waitingTime: ""
             })
