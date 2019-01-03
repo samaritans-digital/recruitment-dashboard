@@ -24,7 +24,7 @@
         <div class="block">
             <blockquote class="kpi">
                 <q class="kpi__stat" id="kpi-unbooked-slots">{{ loader() }}</q>
-                <cite class="kpi__caption">Unbooked interview slots {% if branchQuery %}for this branch{% else %}for all branches{% endif %} right now</cite>
+                <cite class="kpi__caption with-tooltip" title="Including remote interviews hosted at other nearby branches">Unbooked interview slots {% if branchQuery %}for this branch{% else %}for all branches{% endif %} right now</cite>
             </blockquote>
         </div>
         <div class="block">

@@ -7,18 +7,22 @@ const eventbrite = require("../utils/eventbrite")
 
 // Helper function
 const calcAvgWaitingTime = (data) => {
-    // Get array of all waiting times
-    let waitingTimes = data.rows
-        .map(row=>{
-            return row.waitingTime
-        })
-        .filter(waitingTime=>{
-            return waitingTime
-        })
-    // Return the mean
-    return Math.round(waitingTimes.reduce((a, b)=>{
-        return a + b
-    }) / waitingTimes.length)
+    try {
+        // Get array of all waiting times
+        let waitingTimes = data.rows
+            .map(row=>{
+                return row.waitingTime
+            })
+            .filter(waitingTime=>{
+                return waitingTime
+            })
+        // Return the mean
+        return Math.round(waitingTimes.reduce((a, b)=>{
+            return a + b
+        }) / waitingTimes.length)
+    } catch(e) {
+        return null
+    }
 }
 
 
@@ -37,10 +41,10 @@ const getKpis = (req, res, next) => {
             res.status(200).json({
                 applicantCount: data[0].count,
                 unbookedSlots: data[1],
-                avgWaitingTime: (data[0].count) ? calcAvgWaitingTime(data[0]) : null
+                avgWaitingTime: calcAvgWaitingTime(data[0])
             })
         })
-        .catch(err=>next())
+        .catch(err=>next(err))
 }
 
 
@@ -61,10 +65,10 @@ const getBranchKpis = (req, res, next) => {
             res.status(200).json({
                 applicantCount: data[0].count,
                 unbookedSlots: data[1].length,
-                avgWaitingTime: (data[0].count) ? calcAvgWaitingTime(data[0]) : null
+                avgWaitingTime: calcAvgWaitingTime(data[0])
             })
         })
-        .catch(err=>next())
+        .catch(err=>next(err))
 }
 
 
