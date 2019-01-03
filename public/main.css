@@ -590,14 +590,12 @@ main {
 .modal__close {
   width: 25px;
   height: 25px;
-  position: absolute;
+  float: right;
   border: none;
   background: none;
   background-image: url("/img/cross.svg");
   background-size: cover;
   background-position: center;
-  right: 15px;
-  top: 15px;
   font-size: 0;
   color: rgba(0, 0, 0, 0);
   cursor: pointer; }
