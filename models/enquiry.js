@@ -11,16 +11,17 @@ module.exports = (sequelize, Sequelize) => {
         branchName: {
             type: Sequelize.VIRTUAL,
             get: function () {
-                return branchNameFromId(this.getDataValue('branchId'))
+                return branchNameFromId(this.getDataValue("branchId"))
             }
         },
         waitingTime: {
             type: Sequelize.VIRTUAL,
             get: function () {
                 try {
-                    return  moment(this.getDataValue('booking').startTime).diff(moment(), 'days')
+                    return  parseInt(moment(this.getDataValue("booking").startTime)
+                        .diff(moment(this.getDataValue("applicationTime")), "days"))
                 } catch(e) {
-                    return false
+                    return null
                 }
             }
         },

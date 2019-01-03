@@ -1,3 +1,8 @@
 {% extends "_layout.njk" %}
 {% block headline %}Page not found{% endblock %}
-{% block lede %}We can't find what you're looking for.{% endblock %}
+{# {% block lede %}We can't find what you're looking for.{% endblock %} #}
+{% block main %}
+<main class="content container">
+    <p>We can't find what you're looking for. <a href="/">Return to the dashboard.</a></p>
+</main>
+{% endblock %}

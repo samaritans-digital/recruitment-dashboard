@@ -1,5 +1,6 @@
 @import '_fonts'
 @import '_vars'
+@import '_keyframes'
 
 // Resets
 *
@@ -168,6 +169,10 @@ main
     color: transparentize($white, 0.25)
 
 
+// No-block content
+.content
+    padding: 60px 0px
+
 // Block
 .block
     background: $white
@@ -213,18 +218,18 @@ main
             text-transform: uppercase
 
     // Hide three columns
-    thead th:last-of-type, tbody td:last-of-type
+    thead th:nth-of-type(3), tbody td:nth-of-type(2)
         text-align: right
     thead th:nth-of-type(2), tbody td:nth-of-type(1)
         display: none
-    thead th:nth-of-type(3), tbody td:nth-of-type(2)
+    thead th:nth-of-type(4), tbody td:nth-of-type(3)
         display: none
     @media screen and (min-width: 600px)
-        thead th:last-of-type, tbody td:last-of-type
+        thead th:nth-of-type(3), tbody td:nth-of-type(2)
             text-align: left
         thead th:nth-of-type(2), tbody td:nth-of-type(1)
             display: table-cell
-        thead th:nth-of-type(3), tbody td:nth-of-type(2)
+        thead th:nth-of-type(4), tbody td:nth-of-type(3)
             display: table-cell
 
 // Button
@@ -275,7 +280,30 @@ main
             margin-top: -9px
             right: 1rem
 
-// Pagination
+    &.button--download
+        padding-top: 17px
+        padding-right: 55px
+        padding-bottom: 14px
+        &:after
+            content: ''
+            position: absolute
+            background-position: left center
+            background-image: url('/img/arrow.png')
+            background-repeat: no-repeat
+            background-size: cover
+            transform: rotate(90deg)
+            width: 23px
+            height: 18px
+            top: 50%
+            margin-top: -9px
+            right: 1.1rem
+
+
+// Pagination and table controls
+.controls
+    display: flex
+    flex-direction: row
+    justify-content: space-between
 .pagination
     display: flex
     flex-direction: row
@@ -491,13 +519,6 @@ main
         background-repeat: no-repeat
         margin-bottom: -3px
 
-
-@keyframes fadeIn
-    from
-        opacity: 0
-    to
-        opacity: 1
-
 .overlay
     position: fixed
     top: 0
@@ -543,9 +564,10 @@ main
 .kpi__stat
     color: $green
     font-family: $display-text
-    font-size: 1.7em
+    font-size: 2em
     display: block
     margin-bottom: 5px
+    min-height: 38px
     @media screen and (min-width: 992px)
         font-size: 2em
     &:before, &:after
@@ -558,3 +580,27 @@ main
 .kpi__caption
     font-style: normal
     font-size: 0.9em
+
+
+// Loader
+.loader
+    position: relative
+    padding-top: 20px
+    
+    display: block
+    span
+        width: 7px
+        height: 7px
+        background: transparentize($grey, 0.75)
+        display: block
+        position: absolute
+        top: 0px
+        left: 0px
+        border-radius: 100%
+        animation: throb 0.9s ease-in-out infinite
+        &:nth-of-type(2)
+            left: 10px
+            animation-delay: 0.3s
+        &:nth-of-type(3)
+            left: 20px
+            animation-delay: 0.6s

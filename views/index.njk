@@ -1,26 +1,36 @@
 {% extends "_layout.njk" %}
+
+{% macro loader() %}
+    <span class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </span>
+{% endmacro %}
+
 {% block headerModifierClass %}page-header--overlap{% endblock %}
 {% block headline %}Application dashboard{% endblock %}
 {% block lede %}See how your branch is performing in recruitment, relative to others in the region and the country.{% endblock %}
 {% block main %}
 
+
 {% if page === 1 %}
     <section class="kpis grid grid--three-columns">
         <div class="block">
             <blockquote class="kpi">
-                <q class="kpi__stat kpi__stat--orange">XX</q>
+                <q class="kpi__stat kpi__stat--orange" id="kpi-applicants">{{ loader() }}</q>
                 <cite class="kpi__caption">Applicants {% if branchQuery %}to this branch{% else %}to all branches{% endif %} in the last 30 days</cite>
             </blockquote>
         </div>
         <div class="block">
             <blockquote class="kpi">
-                <q class="kpi__stat">XX</q>
+                <q class="kpi__stat" id="kpi-unbooked-slots">{{ loader() }}</q>
                 <cite class="kpi__caption">Unbooked interview slots {% if branchQuery %}for this branch{% else %}for all branches{% endif %} right now</cite>
             </blockquote>
         </div>
         <div class="block">
             <blockquote class="kpi">
-                <q class="kpi__stat kpi__stat--purple">XX days</q>
+                <q class="kpi__stat kpi__stat--purple" id="kpi-avg-waiting-time">{{ loader() }}</q>
                 <cite class="kpi__caption">Average time an applicant will wait for an interview {% if branchQuery %}for this branch{% else %}across all branches{% endif %}</cite>
             </blockquote>
         </div>
@@ -51,8 +61,8 @@
             <tr>
                 <th scope="col" >Name</th>
                 <th scope="col" class="with-tooltip" title="The branch this person wants to volunteer at">Chosen branch</th>
-                <th scope="col" class="with-tooltip" title="When this person filled in the online form">Applied</th>
                 <th scope="col" class="with-tooltip" title="The time and date of the interview this person booked">Interview</th>
+                <th scope="col" class="with-tooltip" title="When this person filled in the online form">Applied</th>
             </tr>
         </thead>
         <tbody>
@@ -60,21 +70,32 @@
                 <tr>
                     <th scope="row"><a href="/applicant/{{applicant.enquiryId}}">{{applicant.firstName}} {{applicant.lastName}}</a></th>
                     <td>{{applicant.branchName}}</td>
-                    <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeTo }}{% endif %}</td>
                     <td>{% if applicant.booking.startTime %}{{ applicant.booking.startTime | prettyDate }}{% endif %}</td>
-                
-                    <td>{{applicant.waitingTime}}</td>
-                
+                    <td>{% if applicant.applicationTime %}{{ applicant.applicationTime | timeTo }}{% endif %}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <div class="pagination">
-        {% if page > 1 %} <a class="button pagination__button pagination__button--previous" onclick="window.location='/page/{{page - 1}}'+window.location.search;">Previous</a>{% endif %}   
-        {% if not lastPage %}<a class="button pagination__button pagination__button--next" onclick="window.location='/page/{{page + 1}}'+window.location.search;">Next</a>{% endif %}
-    </div>
+    <section class="controls">
+        <a class="button button--download" id="launch-modal">Export</a>
+        <div class="pagination">
+            {% if page > 1 %} <a class="button pagination__button pagination__button--previous" onclick="window.location='/page/{{page - 1}}'+window.location.search;">Previous</a>{% endif %}   
+            {% if not lastPage %}<a class="button pagination__button pagination__button--next" onclick="window.location='/page/{{page + 1}}'+window.location.search;">Next</a>{% endif %}
+        </div>    
+    </section>
 
 </main>
+
+{# Overlay #}
+<div class="overlay"></div>
+<div class="reschedule-modal block">
+    <article class="reschedule-modal__inner">
+        <h2 class="block__title reschedule-modal__title">Export applicant data</h2>
+        <p>You can download a copy of this applicant data in CSV format, which you can examine in apps like Excel.</p>
+        <p>The data will contain only applicants for the selected branch.</p>
+        <a href="http://volunteer.samaritans.org/volunteer/{{applicant.id}}/reschedule" class="button button--download reschedule-modal__button">Download CSV</a>
+    </article>
+</div>
 
 {% endblock %}

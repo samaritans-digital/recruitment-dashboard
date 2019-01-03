@@ -1,4 +1,4 @@
-const fetch = require("node-fetch")
+const fetch = require("isomorphic-unfetch")
 
 // Using enquiry ID, grab entire applicaton object from frontend app
 const getApplication = async (enquiryId) => {
