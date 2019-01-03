@@ -88,13 +88,22 @@
 </main>
 
 {# Overlay #}
+
+
 <div class="overlay"></div>
 <div class="reschedule-modal block">
     <article class="reschedule-modal__inner">
         <h2 class="block__title reschedule-modal__title">Export applicant data</h2>
-        <p>You can download a copy of this applicant data in CSV format, which you can examine in apps like Excel.</p>
-        <p>The data will contain only applicants for the selected branch.</p>
-        <a href="http://volunteer.samaritans.org/volunteer/{{applicant.id}}/reschedule" class="button button--download reschedule-modal__button">Download CSV</a>
+        <p>You can download a summary of this data as a file, which you can open in apps like Excel.</p>
+        {% if branchQuery %}
+            <p><strong>Only data for the currently selected branch will be downloaded.</strong></p>
+            <p>It may take a moment for the download to start.</p>
+            <a href="/export/{{ branchQuery }}" class="button button--download reschedule-modal__button">Download CSV</a>
+        {% else %}
+            <p><strong>Data for all branches will be downloaded.</strong></p>
+            <p>It may take a moment for the download to start.</p>
+            <a href="/export" class="button button--download reschedule-modal__button">Download CSV</a>
+        {% endif %}
     </article>
 </div>
 
