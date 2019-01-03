@@ -77,33 +77,30 @@
     </table>
 
     <section class="controls">
-        <a class="button button--download" id="launch-modal">Export</a>
+        <button class="button button--download controls__export" id="launch-modal">Export</button>
         <div class="pagination">
-            {% if page > 1 %} <a class="button pagination__button pagination__button--previous" onclick="window.location='/page/{{page - 1}}'+window.location.search;">Previous</a>{% endif %}   
-            {% if not lastPage %}<a class="button pagination__button pagination__button--next" onclick="window.location='/page/{{page + 1}}'+window.location.search;">Next</a>{% endif %}
+            {% if page > 1 %} <button class="button pagination__button pagination__button--previous" onclick="window.location='/page/{{page - 1}}'+window.location.search;">Previous</button>{% endif %}   
+            {% if not lastPage %}<button class="button pagination__button pagination__button--next" onclick="window.location='/page/{{page + 1}}'+window.location.search;">Next</button>{% endif %}
         </div>    
     </section>
 
 </main>
 
-{# Overlay #}
-
-
-<div class="overlay"></div>
-<div class="reschedule-modal block">
-    <article class="reschedule-modal__inner">
-        <h2 class="block__title reschedule-modal__title">Export applicant data</h2>
+<dialog class="modal block">
+    <button class="modal__close">Close</button>
+    <article class="modal__inner">
+        <h2 class="block__title modal__title">Export applicant data</h2>
         <p>You can download a summary of this data as a file, which you can open in apps like Excel.</p>
         {% if branchQuery %}
             <p><strong>Only data for the currently selected branch will be downloaded.</strong></p>
             <p>It may take a moment for the download to start.</p>
-            <a href="/export/{{ branchQuery }}" class="button button--download reschedule-modal__button">Download CSV</a>
+            <a href="/export/{{ branchQuery }}" class="button button--download modal__button">Download CSV</a>
         {% else %}
             <p><strong>Data for all branches will be downloaded.</strong></p>
             <p>It may take a moment for the download to start.</p>
-            <a href="/export" class="button button--download reschedule-modal__button">Download CSV</a>
+            <a href="/export" class="button button--download modal__button">Download CSV</a>
         {% endif %}
     </article>
-</div>
+</dialog>
 
 {% endblock %}

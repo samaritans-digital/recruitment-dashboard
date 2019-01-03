@@ -2,6 +2,9 @@
 @import '_vars'
 @import '_keyframes'
 
+// Dialog polyfill CSS
+@import 'dialog-polyfill/dialog-polyfill'
+
 // Resets
 *
     margin: 0
@@ -218,15 +221,15 @@ main
             text-transform: uppercase
 
     // Hide three columns
-    thead th:nth-of-type(3), tbody td:nth-of-type(2)
-        text-align: right
+    // thead th:nth-of-type(3), tbody td:nth-of-type(2)
+    //     text-align: right
     thead th:nth-of-type(2), tbody td:nth-of-type(1)
         display: none
     thead th:nth-of-type(4), tbody td:nth-of-type(3)
         display: none
     @media screen and (min-width: 600px)
-        thead th:nth-of-type(3), tbody td:nth-of-type(2)
-            text-align: left
+        // thead th:nth-of-type(3), tbody td:nth-of-type(2)
+        //     text-align: left
         thead th:nth-of-type(2), tbody td:nth-of-type(1)
             display: table-cell
         thead th:nth-of-type(4), tbody td:nth-of-type(3)
@@ -304,6 +307,12 @@ main
     display: flex
     flex-direction: row
     justify-content: space-between
+
+.controls__export
+    display: none
+    @media screen and (min-width: 768px)
+        display: inline-block
+        
 .pagination
     display: flex
     flex-direction: row
@@ -523,44 +532,56 @@ main
         background-repeat: no-repeat
         margin-bottom: -3px
 
-.overlay
-    position: fixed
-    top: 0
-    left: 0
-    width: 100vw
-    height: 100vh
-    background: transparentize($grey, 0.25)
-    z-index: 99
-    display: none
-    &.visible
-        display: block
-        animation: fadeIn 0.2s ease-out
 
-.reschedule-modal
+// Modal
+
+.modal
     max-width: 600px
-    margin: 0px auto
+    margin: 0px 30px
     position: fixed
     top: 60px
     left: 0px
     right: 0px
     z-index: 100
     border-radius: 2px
+    border: none
     overflow: hidden
-    @media screen and (min-width: 992px)
+    animation: fadeIn 0.2s ease-out
+    @media screen and (min-width: 600px)
         top: 120px
-    display: none
-    &.visible
-        display: block
+        margin: 0px auto
+    &::backdrop
+        background: transparentize($grey, 0.5)
         animation: fadeIn 0.2s ease-out
 
-.reschedule-modal__inner
+// For polyfill
+._dialog_overlay
+        background: transparentize($grey, 0.5)
+        animation: fadeIn 0.2s ease-out
+
+.modal__close
+    width: 25px
+    height: 25px
+    position: absolute
+    border: none
+    background: none
+    background-image: url('/img/cross.svg')
+    background-size: cover
+    background-position: center
+    right: 15px
+    top: 15px
+    font-size: 0
+    color: rgba(0,0,0,0)
+    cursor: pointer
+
+.modal__inner
     p
         font-size: 1.1em
 
-.reschedule-modal__title
+.modal__title
     margin-bottom: 20px
 
-.reschedule-modal__button
+.modal__button
     margin-top: 20px
 
 
@@ -590,7 +611,6 @@ main
 .loader
     position: relative
     padding-top: 20px
-    
     display: block
     span
         width: 7px

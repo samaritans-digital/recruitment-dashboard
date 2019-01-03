@@ -17,9 +17,7 @@ const buildWhereQuery = (sort, branch) => {
     let query = {}
     // If sort is specified, filter out past interviews
     if (sort === "soonest") {
-        query.booking = { 
-            startTime: { [Op.gte]: new Date() }
-        }
+        query.booking = { startTime: { [Op.gte]: new Date() }}
     }
     // If branch is specified, filter by it here
     if (branch) {
@@ -31,7 +29,6 @@ const buildWhereQuery = (sort, branch) => {
 
 // Get list of recent applicants
 const index = (req, res, next) => {
-
     Enquiry.findAll({
         order: (req.query.sort === "soonest")? [["booking.startTime", "ASC"]] : [["applicationTime", "DESC"]],
         where: buildWhereQuery(req.query.sort, req.query.branch),
