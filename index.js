@@ -2,24 +2,32 @@ const express = require("express")
 const nunjucks = require("nunjucks")
 const path = require("path")
 const logger = require("morgan")
+const basicAuth = require("express-basic-auth")
+const enforce = require("express-sslify")
 const router = require("./routers/router")
 const filters = require("./utils/nunjucksFilters")
-const basicAuth = require('express-basic-auth')
 
 // Load env
 require("dotenv").config()
+const nodeEnv = process.env.NODE_ENV || "development"
 
-// Init express
+// Init express and redirect to HTTPS in production
 const server = express()
 server.use(logger("dev"))
+if(nodeEnv === "production"){
+    server.use(enforce.HTTPS({ trustProtoHeader: true }))
+}
 
 // View config
 server.set("views", path.join(__dirname, "views"))
-const nunjucksEnv = nunjucks.configure("views", {
+let options = {
     autoescape: true,
-    express: server,
-    watch: true // Slows things down
-})
+    express: server
+}
+if(nodeEnv !== "production"){
+    options.watch = true // Slows things down
+}
+const nunjucksEnv = nunjucks.configure("views", options)
 // Apply nunjucks filters
 filters(nunjucksEnv)
 server.set("view engine", "njk")
