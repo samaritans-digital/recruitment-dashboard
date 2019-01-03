@@ -93,6 +93,18 @@
         <article class="block">
             <h2 class="block__title">Interview booking</h2>
             {% if applicant.booking %}
+
+                {% if interviewComplete %}
+                    <section class="panel">
+                        <p class="small">This interview is in the past, but you can still reschedule it.</p>                    
+                    </section>
+                {% elif applicant.branchId !== applicant.booking.branch.id %}
+                    <section class="panel">
+                        <p class="small">This interview will be conducted by a different branch.</p>                    
+                    </section>
+                {% endif %}
+
+
                 <table class="details-table details-table--bottom-margin">
                     <tbody>
                         <tr>
@@ -118,9 +130,6 @@
                         </tr>
                     </tbody>
                 </table>
-                {% if interviewComplete %}
-                    <p class="small">The booked interview is in the past, but if it didn't happen, you can still reschedule it to a future date.</p>
-                {% endif %}
                 <button class="button button--start" id="launch-modal">Reschedule or cancel</button>
             {% else %}
                 <span class="none-given">No interview booked.</span>
