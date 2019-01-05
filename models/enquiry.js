@@ -25,6 +25,17 @@ module.exports = (sequelize, Sequelize) => {
                 }
             }
         },
+        // Concatenate the email and name fields into a single searchable column
+        searchConcat: {
+            type: Sequelize.VIRTUAL,
+            get: function () {
+                try {
+                    return this.getDataValue("firstName").toLowerCase() + " " + this.getDataValue("lastName").toLowerCase() + " " + this.getDataValue("email").toLowerCase()
+                } catch(e) {
+                    return null
+                }
+            }
+        },
 
         firstName: Sequelize.STRING,
         lastName: Sequelize.STRING,

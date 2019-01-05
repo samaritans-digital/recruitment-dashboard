@@ -65,6 +65,31 @@ const index = (req, res, next) => {
         })
 }
 
+
+const search = (req, res, next) => {
+
+
+    const searchQuery = req.query.q
+
+    Enquiry.findAll({
+        order: (req.query.sort === "soonest")? [["booking.startTime", "ASC"]] : [["applicationTime", "DESC"]],
+        limit: 11,
+        where: {
+            searchConcat: {[Op.like]: "%Helen"}
+        }
+    })
+        .then(data=>{
+            console.log(data)
+            res.json(data)
+        })
+        .catch(err=>{
+            console.log(err)
+            res.json(err)
+        })
+}
+
+
 module.exports = {
-    index: index
+    index: index,
+    search: search
 }

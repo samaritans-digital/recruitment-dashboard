@@ -11,7 +11,10 @@ router.get("/api/kpis", apiController.getKpis)
 // UI
 router.get("/page/:page", controller.index)
 router.get("/", controller.index)
+router.get("/search", controller.search)
+
 router.get("/applicant/:enquiryId", applicantController.index)
+
 
 // Export
 router.get("/export/:branchId", exportController.index)
