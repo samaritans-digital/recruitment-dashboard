@@ -14,7 +14,7 @@
 {% block main %}
 
 {% if page === 1 %}
-    <section class="kpis grid grid--three-columns">
+    <section class="kpis grid grid--three-columns" aria-live="polite">
         <div class="block">
             <blockquote class="kpi">
                 <q class="kpi__stat kpi__stat--orange" id="kpi-applicants">{{ loader() }}</q>
@@ -58,7 +58,7 @@
     <table class="applicants-table">
         <thead>
             <tr>
-                <th scope="col" >Name</th>
+                <th scope="col">Name</th>
                 <th scope="col" class="with-tooltip" title="The branch this person wants to volunteer at">Chosen branch</th>
                 <th scope="col" class="with-tooltip" title="The time and date of the interview this person booked">Interview</th>
                 <th scope="col" class="with-tooltip" title="When this person filled in the online form">Applied</th>
