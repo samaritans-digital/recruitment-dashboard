@@ -26,6 +26,16 @@ The app needs the following environment variables set to run:
 * `EVENTBRITE_TOKEN`, an Oauth API Token from Eventbrite, to calculate some KPIs
 * `USER` and `PASSWORD`, to secure the app
 
+Running locally
+---------------
+
+To develop locally, you need `node` and `npm` installed, and to make sure all environment variables are set. Then:
+
+1. Clone this repository and `cd` into it.
+2. Run `npm install` and `npm run dev`.
+
+That should start a dev server and gulp, which builds and watches front-end SASS and JS.
+
 Deployment
 ----------
 
