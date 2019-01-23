@@ -82,6 +82,8 @@ body {
 
 a {
   color: #007989; }
+  a:hover {
+    text-decoration: none; }
 
 p {
   line-height: 1.5em;
@@ -110,20 +112,13 @@ main {
   justify-content: flex-start;
   align-items: center; }
 
-.phase-banner__icon {
-  display: inline-block;
-  height: 70px;
-  flex: 0;
-  width: auto;
-  margin-right: 20px; }
-  @media screen and (min-width: 600px) {
-    .phase-banner__icon {
-      max-height: 45px; } }
-
 .phase-banner__text {
   display: inline-block;
-  margin: 10px 0px;
-  flex: 1; }
+  margin: 15px 0px;
+  flex: 1;
+  font-size: 1.1em; }
+  .phase-banner__text a {
+    color: #32aed4; }
 
 .site-header {
   padding: 20px 0px; }

@@ -18,6 +18,8 @@ body
 
 a
     color: $blue
+    &:hover
+        text-decoration: none
 
 p
     line-height: 1.5em
@@ -50,19 +52,14 @@ main
     justify-content: flex-start
     align-items: center
 
-.phase-banner__icon
-    display: inline-block
-    height: 70px
-    flex: 0
-    width: auto
-    margin-right: 20px
-    @media screen and (min-width: 600px)
-        max-height: 45px
-
 .phase-banner__text
     display: inline-block
-    margin: 10px 0px
+    margin: 15px 0px
     flex: 1
+    font-size: 1.1em
+
+    a
+        color: $brightBlue
 
 
 // Site header
