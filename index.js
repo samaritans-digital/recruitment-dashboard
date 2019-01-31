@@ -2,7 +2,11 @@ const express = require("express")
 const nunjucks = require("nunjucks")
 const path = require("path")
 const logger = require("morgan")
+const bodyParser = require("body-parser")
 const enforce = require("express-sslify")
+const passwordless = require("passwordless")
+const PostgreStore = require("passwordless-postgrestore")
+
 const router = require("./routers/router")
 const filters = require("./utils/nunjucksFilters")
 
@@ -30,6 +34,24 @@ const nunjucksEnv = nunjucks.configure("views", options)
 // Apply nunjucks filters
 filters(nunjucksEnv)
 server.set("view engine", "njk")
+
+// Parse post responses
+server.use(bodyParser.urlencoded({ extended: false }))
+
+
+
+
+// Auth
+passwordless.init(new PostgreStore(process.env.DATABASE_URL))
+passwordless.addDelivery((tokenToSend, uidToSend, recipient, callback) => {
+    // Send out a token
+    
+})
+server.use(passwordless.sessionSupport())
+server.use(passwordless.acceptToken())
+
+
+
 
 // Bind routes to URLs
 server.use("/", router)
