@@ -1,5 +1,21 @@
-<form method="post" action="login">
-    <label for="email">Your recruitment email address</label>
-    <input type="email" name="user" id="email" required/>
-    <button type="submit">Start log in</button>
-</form>
+{% extends "_blank-layout.njk" %}
+
+{% block main %}
+
+<a class="login-logo" href="/">
+    <img class="login-logo__image" src="/img/logo.png" alt="Samaritans"/>
+</a>
+
+<main class="block login">
+    <p>To get started, enter the email address you use to manage interview slots on Eventbrite.</p>
+
+    <form class="login__form" method="post" action="login">
+        <label class="login__label" for="email">Your recruitment email address</label>
+        <input class="login__email" type="email" name="user" id="email" required/><br/>
+        <button class="button button--start login__button" type="submit">Start log in</button>
+    </form>
+</main>
+
+<p class="login-help">Need help? <a href="mailto:volunteering@samaritans.org">Email us</a></p>
+
+{% endblock %}

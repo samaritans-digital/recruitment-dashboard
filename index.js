@@ -47,15 +47,18 @@ passwordless.addDelivery((tokenToSend, uidToSend, recipient, callback) => {
     emails.sendEmail(tokenToSend, uidToSend, recipient)
     callback()
 })
-server.use(passwordless.acceptToken())
+// server.use(passwordless.acceptToken())
 server.use(session({
     secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
     store: new (require("connect-pg-simple")(session))()
 }))
+server.use(passwordless.sessionSupport())
 
 // Bind routes to URLs
-server.use("/", router)
 server.use(express.static("public"))
+server.use("/", router)
 server.use((req, res)=>{
     res.status(404).render("404.njk")
 })

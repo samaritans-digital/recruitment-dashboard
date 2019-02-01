@@ -28,9 +28,9 @@ const sendMagicLink = (email, delivery, callback, req) => {
         })
 }
 
-// Determine whether to send magic link
+// Display the message telling user to check email
 const postLogin = (req, res) => {
-    res.json({message: "Magic link has been sent"})
+    res.render("login-check-email")
 }
 
 // Process magic link and start session
