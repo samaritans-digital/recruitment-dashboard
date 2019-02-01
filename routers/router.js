@@ -9,6 +9,7 @@ const exportController = require("../controllers/exportController")
 // Auth
 router.get("/login", authController.getLogin)
 router.post("/login", passwordless.requestToken(authController.sendMagicLink), authController.checkEmail)
+
 router.get("/login/finish", passwordless.acceptToken({ successRedirect: "/"}))
 router.get("/logout", passwordless.logout(), authController.logout)
 

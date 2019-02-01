@@ -52,6 +52,10 @@ server.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie : {
+        // Sessions last 30 mins in prod, else 24 hours
+        maxAge: (nodeEnv === "production") ? 1000 * 60 * 30 : 1000 * 60 * 60 * 24
+    },
     store: new (require("connect-pg-simple")(session))()
 }))
 server.use(passwordless.sessionSupport())
