@@ -1,4 +1,5 @@
 const express = require("express")
+const session = require("express-session")
 const nunjucks = require("nunjucks")
 const path = require("path")
 const logger = require("morgan")
@@ -46,8 +47,11 @@ passwordless.addDelivery((tokenToSend, uidToSend, recipient, callback) => {
     emails.sendEmail(tokenToSend, uidToSend, recipient)
     callback()
 })
-// server.use(passwordless.sessionSupport())
 server.use(passwordless.acceptToken())
+server.use(session({
+    secret: process.env.SESSION_SECRET,
+    store: new (require("connect-pg-simple")(session))()
+}))
 
 // Bind routes to URLs
 server.use("/", router)

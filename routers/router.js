@@ -13,7 +13,7 @@ router.get("/api/kpis", apiController.getKpis)
 // Auth
 router.get("/login", authController.getLogin)
 router.post("/login", passwordless.requestToken(authController.sendMagicLink), authController.postLogin)
-router.get("/login/finish", authController.finishLogin)
+router.get("/login/finish", passwordless.acceptToken(), authController.finishLogin)
 router.get("/logout", authController.logout)
 
 // List and detail views

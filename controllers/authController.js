@@ -9,9 +9,6 @@ const getLogin = (req, res) => {
 
 // Send magic link
 const sendMagicLink = (email, delivery, callback, req) => {
-
-    console.log(email)
-
     User.findOne({
         where: {
             email: email
