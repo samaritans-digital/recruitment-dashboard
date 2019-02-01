@@ -28,9 +28,13 @@ const sendMagicLink = (email, delivery, callback, req) => {
         })
 }
 
-// Display the message telling user to check email
-const postLogin = (req, res) => {
+
+const checkEmail = (req, res) => {
     res.render("login-check-email")
+}
+
+const tokenAlreadyUsed = (req, res) => {
+    res.render("login-already-used")
 }
 
 // Process magic link and start session
@@ -39,13 +43,14 @@ const finishLogin = (req, res) => {
 }
 
 const logout = (req, res) => {
-
+    res.redirect("/login")
 }
 
 module.exports = {
     getLogin: getLogin,
     sendMagicLink: sendMagicLink,
-    postLogin: postLogin,
+    checkEmail: checkEmail,
+    tokenAlreadyUsed: tokenAlreadyUsed,
     finishLogin: finishLogin,
     logout: logout
 }

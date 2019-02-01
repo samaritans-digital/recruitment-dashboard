@@ -8,9 +8,9 @@ const exportController = require("../controllers/exportController")
 
 // Auth
 router.get("/login", authController.getLogin)
-router.post("/login", passwordless.requestToken(authController.sendMagicLink), authController.postLogin)
+router.post("/login", passwordless.requestToken(authController.sendMagicLink), authController.checkEmail)
 router.get("/login/finish", passwordless.acceptToken({ successRedirect: "/"}))
-router.get("/logout", authController.logout)
+router.get("/logout", passwordless.logout(), authController.logout)
 
 // Everything below here needs auth
 router.use(passwordless.restricted({ failureRedirect: "/login" }))
