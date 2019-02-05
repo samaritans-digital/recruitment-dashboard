@@ -1,0 +1,87 @@
+{% extends "_layout.njk" %}
+
+{% block headerModifierClass %}page-header--overlap{% endblock %}
+{% block breadcrumbs %}
+    <li class="page-header__breadcrumb"><a class="page-header__breadcrumb-link" href="/">Dashboard</a></li>
+    <li class="page-header__breadcrumb">Users</li>
+{% endblock %}
+{% block headline %}Manage users{% endblock %}
+{% block lede %}Review the email addresses allowed to access this dashboard.{% endblock %}
+{% block main %}
+
+{% if error %}
+    <section class="error">
+        {{ error | safe }}
+    </section>
+{% endif %}
+
+<div class="grid grid--with-sidebar grid--bottom-margin">
+
+<main class="block">
+    <table class="applicants-table">
+        <thead>
+            <tr>
+                <th scope="col">Email address</th>
+                <th scope="col">Branch</th>
+                <th scope="col">Remove?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{user.email}}</th>
+                    <td>{% if user.admin %}<span class="administrator-badge">Admin</span>{% else %}{{user.branchId}}{% endif %}</td>
+                    <td>
+                        <button class="all-users__remove" id="launch-remove-user-modal" data-user="{{user.email}}">Remove</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+
+<main class="block create-user">
+    <h2 class="block__title">Create new user</h2>
+
+    <form method="post" action="/users" class="create-user__form">
+    <div class="create-user__field-group">
+        <label class="create-user__email-label" for="email">Email address</label>
+        <input class="create-user__email" type="email" name="email" required id="email"/>
+    </div>
+    <div class="create-user__field-group">
+        <label class="create-user__branch-label" for="email">Branch</label>
+        <select class="create-user__branch" id="branch" name="branch">
+            {% for branch in branches %}
+                <option value="{{ branch.id }}">{{ branch.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="create-user__field-group">
+        <label class="create-user__administrator-label" for="administrator">Is this user an administrator?</label>
+        <input class="create-user__administrator" id="administrator" type="checkbox" value="true" name="administrator"/>
+    </div>
+
+
+        <button type="submit" class="button">Create</button>
+    </form>
+</main>
+
+</div>
+
+<dialog class="modal block">
+    <button class="modal__close">Close</button>
+    <article class="modal__inner">
+        <h2 class="block__title modal__title">Remove this user</h2>
+        <p>If you remove this user, it will no longer be possible to sign into the dashboard with this email address.</p>
+        <p><strong>Eventbrite will be unaffected.</strong></p>
+        <p>Are you sure you want to remove this user?</p>
+        <form method="post" action="/users/delete">
+            <input type="hidden" id="email-to-remove" name="email" value=""/>
+            <button  type="submit" class="button modal__button">Yes, remove</button>
+        </form>
+
+    </article>
+</dialog>
+
+{% endblock %}

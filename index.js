@@ -47,14 +47,12 @@ passwordless.addDelivery((tokenToSend, uidToSend, recipient, callback) => {
     emails.sendEmail(tokenToSend, uidToSend, recipient)
     callback()
 })
-// server.use(passwordless.acceptToken())
 server.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie : {
-        // Sessions last 30 mins in prod, else 24 hours
-        maxAge: (nodeEnv === "production") ? 1000 * 60 * 30 : 1000 * 60 * 60 * 24
+        maxAge: 1000 * 60 * 30
     },
     store: new (require("connect-pg-simple")(session))()
 }))

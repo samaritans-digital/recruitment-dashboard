@@ -4,6 +4,8 @@ const mandrillClient = new mandrill.Mandrill(process.env.MANDRILL_API_KEY)
 const sendEmail = (tokenToSend, uidToSend, recipient) => {
     const url = `${process.env.HOST}/login/finish?token=${tokenToSend}&uid=${encodeURIComponent(uidToSend)}`
    
+    console.log("URL TO LOG IN IS: ", url)
+
     const message = {
         from_email: "donotreply@samaritans-volunteers.org",
         from_name: "Samaritans",

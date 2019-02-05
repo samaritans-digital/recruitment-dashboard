@@ -11,7 +11,7 @@
 
     <section class="phase-banner">
         <div class="phase-banner__inner container">
-            <p class="phase-banner__text">We're testing out this service – your <a href="mailto:volunteering@samaritans.org">feedback</a> will help us improve it.</p>
+            <p class="phase-banner__text">This service is being tested and may change significantly – your <a href="mailto:volunteering@samaritans.org">feedback</a> will help us improve it.</p>
         </div>
     </section>
 
@@ -45,6 +45,11 @@
                     <li class="site-footer__menu-item">
                         <a class="site-footer__menu-link" href="https://volunteer.samaritans.org/volunteer">Volunteer with us</a>
                     </li>
+                    {% if isAdmin %}
+                        <li class="site-footer__menu-item">
+                            <a class="site-footer__menu-link" href="/users">Manage users</a>
+                        </li>
+                    {% endif %}
                     <li class="site-footer__menu-item">
                         <a class="site-footer__menu-link" href="/logout">Log out</a>
                     </li>

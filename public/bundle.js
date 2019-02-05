@@ -118,7 +118,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _submitFilters = __webpack_require__(/*! ./submitFilters */ \"./client/submitFilters.js\");\n\nvar _submitFilters2 = _interopRequireDefault(_submitFilters);\n\nvar _launchModal = __webpack_require__(/*! ./launchModal */ \"./client/launchModal.js\");\n\nvar _launchModal2 = _interopRequireDefault(_launchModal);\n\nvar _fetchKpis = __webpack_require__(/*! ./fetchKpis */ \"./client/fetchKpis.js\");\n\nvar _fetchKpis2 = _interopRequireDefault(_fetchKpis);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nwindow.addEventListener(\"DOMContentLoaded\", () => {\n  (0, _submitFilters2.default)();\n  (0, _launchModal2.default)();\n  (0, _fetchKpis2.default)();\n});\n\n//# sourceURL=webpack:///./client/main.js?");
+eval("\n\nvar _submitFilters = __webpack_require__(/*! ./submitFilters */ \"./client/submitFilters.js\");\n\nvar _submitFilters2 = _interopRequireDefault(_submitFilters);\n\nvar _launchModal = __webpack_require__(/*! ./launchModal */ \"./client/launchModal.js\");\n\nvar _launchModal2 = _interopRequireDefault(_launchModal);\n\nvar _removeUser = __webpack_require__(/*! ./removeUser */ \"./client/removeUser.js\");\n\nvar _removeUser2 = _interopRequireDefault(_removeUser);\n\nvar _fetchKpis = __webpack_require__(/*! ./fetchKpis */ \"./client/fetchKpis.js\");\n\nvar _fetchKpis2 = _interopRequireDefault(_fetchKpis);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nwindow.addEventListener(\"DOMContentLoaded\", () => {\n  (0, _submitFilters2.default)();\n  (0, _launchModal2.default)();\n  (0, _fetchKpis2.default)();\n  (0, _removeUser2.default)();\n});\n\n//# sourceURL=webpack:///./client/main.js?");
+
+/***/ }),
+
+/***/ "./client/removeUser.js":
+/*!******************************!*\
+  !*** ./client/removeUser.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _dialogPolyfill = __webpack_require__(/*! dialog-polyfill */ \"./node_modules/dialog-polyfill/dialog-polyfill.js\");\n\nvar _dialogPolyfill2 = _interopRequireDefault(_dialogPolyfill);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = () => {\n  if (document.querySelector('#launch-remove-user-modal')) {\n    const buttons = document.querySelectorAll('#launch-remove-user-modal');\n    const modal = document.querySelector('.modal');\n    const close = document.querySelector('.modal .modal__close');\n    const emailField = document.querySelector('.modal #email-to-remove'); // Turn on polyfill\n\n    _dialogPolyfill2.default.registerDialog(modal);\n\n    console.log(buttons);\n    buttons.forEach(button => {\n      button.addEventListener('click', () => {\n        // Set value of field to remove\n        emailField.value = button.dataset.user;\n        modal.showModal();\n      });\n    });\n    close.addEventListener('click', () => {\n      modal.close();\n    });\n  }\n};\n\n//# sourceURL=webpack:///./client/removeUser.js?");
 
 /***/ }),
 

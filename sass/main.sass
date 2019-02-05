@@ -34,6 +34,18 @@ p
 main
   display: block
 
+.error
+    background: #fff9b8
+    margin-top: -10px
+    z-index: 999
+    margin-bottom: 20px
+    display: block
+    color: black
+    padding: 15px
+    position: relative
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1)
+    border-left: 5px solid #dcd11b
+
 // Fixed width container
 .container
     max-width: $max-width
@@ -647,6 +659,9 @@ main
     margin: 0px auto 50px auto
     color: $grey
 
+.login--thanks
+    text-align: center
+
 .login__label
     font-weight: bold
     display: block
@@ -668,3 +683,61 @@ main
 .login__thanks
     color: $grey
     margin-bottom: 10px
+
+
+// Users
+.all-users__remove
+    border: none
+    background: none
+    font-size: 1em
+    color: $blue
+    cursor: pointer
+    font-weight: bold
+    text-decoration: underline
+    &:hover
+        text-decoration: none
+
+
+.administrator-badge
+    display: inline-block
+    background: $green
+    text-transform: uppercase
+    padding: 5px 10px
+    border-radius: 57px
+    font-size: 0.75em
+    font-weight: bold
+    color: white
+    letter-spacing: 0.5px
+
+
+.create-user__email-label,
+.create-user__branch-label,
+.create-user__administrator-label
+    display: block
+    margin-bottom: 5px
+    font-size: 0.9em
+    color: $grey
+
+.create-user__email,
+.create-user__branch
+    width: 100%
+    display: block
+    font-size: 1em
+    padding: 5px
+    border-radius: 2px
+    border: 1px solid transparentize($grey, 0.9)
+    color: $grey
+    margin-bottom: 20px
+.create-user__branch
+    background: none
+    background-image: url('/img/chevron-down.svg')
+    background-size: 20px
+    background-repeat: no-repeat
+    background-position: 99% center
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
+.create-user__administrator
+    margin-bottom: 20px
+

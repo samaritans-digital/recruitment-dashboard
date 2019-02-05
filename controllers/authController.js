@@ -8,7 +8,7 @@ const getLogin = (req, res) => {
 }
 
 // Send magic link
-const sendMagicLink = (email, delivery, callback, req) => {
+const sendMagicLink = (email, delivery, callback) => {
     User.findOne({
         where: {
             email: email
@@ -28,9 +28,10 @@ const sendMagicLink = (email, delivery, callback, req) => {
         })
 }
 
-
 const checkEmail = (req, res) => {
-    res.render("login-check-email")
+    res.render("login-check-email", {
+        email: req.body.user
+    })
 }
 
 const tokenAlreadyUsed = (req, res) => {
@@ -42,8 +43,31 @@ const finishLogin = (req, res) => {
     res.send("Login finished!")
 }
 
+// Clear token and log out
 const logout = (req, res) => {
     res.redirect("/login")
+}
+
+// Check whether user is admin
+const isAdmin = (req, res, next) => {
+    User.findById(req.user)
+        .then(user=> {
+            if(user.admin){
+                res.locals = {
+                    isAdmin: true
+                }
+            }
+            next()
+        })
+}
+
+// Only permit requests from administrators
+const adminsOnly = (req, res, next) => {
+    if(res.locals.isAdmin === true){
+        next()
+    } else {
+        res.redirect("/")
+    }
 }
 
 module.exports = {
@@ -52,5 +76,7 @@ module.exports = {
     checkEmail: checkEmail,
     tokenAlreadyUsed: tokenAlreadyUsed,
     finishLogin: finishLogin,
-    logout: logout
+    logout: logout,
+    isAdmin: isAdmin,
+    adminsOnly: adminsOnly
 }
