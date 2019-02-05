@@ -14,7 +14,7 @@
 {% block main %}
 
 {% if page === 1 %}
-    <section class="kpis grid grid--three-columns" aria-live="polite">
+    <section class="kpis grid grid--three-columns" aria-live="polite" data-branch="{{userBranch}}">
         <div class="block">
             <blockquote class="kpi">
                 <q class="kpi__stat kpi__stat--orange" id="kpi-applicants">{{ loader() }}</q>
@@ -30,11 +30,14 @@
         <div class="block">
             <blockquote class="kpi">
                 <q class="kpi__stat kpi__stat--purple" id="kpi-avg-waiting-time">{{ loader() }}</q>
-                <cite class="kpi__caption">Average time an applicant will wait for an interview {% if branchQuery %}for this branch{% else %}across all branches{% endif %}</cite>
+                <cite class="kpi__caption">Average time an applicant will wait for an interview {% if  branchQuery %}for this branch{% else %}across all branches{% endif %}</cite>
             </blockquote>
         </div>
     </section>
 {% endif %}
+
+
+
 
 <main class="block block--bottom-margin">
     <h2 class="block__title">{% if sortQuery === "soonest" %}Upcoming interviews{% else %}Recent applicants{% endif %}{% if page > 1 %}, page {{ page }}{% endif %}</h2>

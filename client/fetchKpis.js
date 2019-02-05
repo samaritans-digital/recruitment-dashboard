@@ -4,11 +4,15 @@ export default () => {
     // Check that the DOM elements exist
     if(document.querySelector(".kpis")){
 
+        const kpis = document.querySelector(".kpis")
+
         const applicants = document.querySelector('#kpi-applicants')
         const slots = document.querySelector('#kpi-unbooked-slots')
         const waiting = document.querySelector('#kpi-avg-waiting-time')
 
         let query = parseQuery(window.location.search)
+
+        if(kpis.dataset.branch){ query.branch = kpis.dataset.branch }
 
         fetchKpis(query.branch)
             .then(data=>{

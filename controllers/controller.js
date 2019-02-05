@@ -60,7 +60,7 @@ const index = (req, res, next) => {
                     applicants: applicants,
                     branches: branchNames,
                     page: calculatePage(req.params.page),
-                    branchQuery: req.query.branch,
+                    branchQuery: (res.locals.isAdmin)? req.query.branch : res.locals.userBranch,
                     sortQuery: req.query.sort,
                     lastPage: lastPage
                 })
