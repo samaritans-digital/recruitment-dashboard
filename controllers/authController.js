@@ -53,7 +53,7 @@ const isAdmin = (req, res, next) => {
     User.findById(req.user)
         .then(user=> {
             res.locals = {
-                isAdmin: (user.isAdmin)? true : false,
+                isAdmin: (user.admin)? true : false,
                 userBranch: user.branchId
             }
             next()

@@ -14,7 +14,7 @@
 {% block main %}
 
 {% if page === 1 %}
-    <section class="kpis grid grid--three-columns" aria-live="polite" data-branch="{{userBranch}}">
+    <section class="kpis grid grid--three-columns" aria-live="polite" {% if not isAdmin %}data-branch="{{userBranch}}"{% endif %}>
         <div class="block">
             <blockquote class="kpi">
                 <q class="kpi__stat kpi__stat--orange" id="kpi-applicants">{{ loader() }}</q>

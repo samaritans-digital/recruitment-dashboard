@@ -15,7 +15,7 @@ const calculatePage = (rawPage)=>{
 // Build filters
 const buildWhereQuery = (sort, branch, userInfo) => {
 
-    console.log(userInfo)
+    console.log("\n\n\n", userInfo, "\n\n\n")
 
     let query = {}
     // If sort is specified, filter out past interviews
@@ -36,7 +36,6 @@ const buildWhereQuery = (sort, branch, userInfo) => {
 
 // Get list of recent applicants
 const index = (req, res, next) => {
-
     Enquiry.findAll({
         order: (req.query.sort === "soonest")? [["booking.startTime", "ASC"]] : [["applicationTime", "DESC"]],
         where: buildWhereQuery(req.query.sort, req.query.branch, res.locals),
