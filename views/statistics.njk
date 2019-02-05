@@ -1,0 +1,18 @@
+{% extends "_layout.njk" %}
+
+{% block headerModifierClass %}page-header--overlap{% endblock %}
+{% block breadcrumbs %}
+    <li class="page-header__breadcrumb"><a class="page-header__breadcrumb-link" href="/">Dashboard</a></li>
+    <li class="page-header__breadcrumb">Statistics</li>
+{% endblock %}
+{% block headline %}Cluster and region statistics{% endblock %}
+{% block lede %}See how recruitment is going in other clusters and regions.{% endblock %}
+{% block main %}
+
+<main class="block block--bottom-margin">
+
+<iframe width="100%" height="750" src="https://datastudio.google.com/embed/reporting/1HTtCU5Ol6437cPVBe7w7xexLforPatX_/page/anAg" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+</main>
+
+{% endblock %}

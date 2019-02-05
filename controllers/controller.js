@@ -72,6 +72,12 @@ const index = (req, res, next) => {
         })
 }
 
+// Show stats
+const statistics = (req, res) => {
+    res.render("statistics")
+}
+
 module.exports = {
-    index: index
+    index: index,
+    statistics: statistics
 }

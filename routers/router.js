@@ -36,6 +36,6 @@ router.post("/users/delete", authController.adminsOnly, userController.deleteUse
 router.get("/page/:page", controller.index)
 router.get("/applicant/:enquiryId", applicantController.index)
 router.get("/", controller.index)
-
+router.get("/statistics", controller.statistics)
 
 module.exports = router

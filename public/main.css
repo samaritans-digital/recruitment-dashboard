@@ -637,6 +637,17 @@ main {
   font-style: normal;
   font-size: 0.9em; }
 
+.stats-link {
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: block;
+  margin-top: -10px; }
+  .stats-link:after {
+    content: "";
+    background-image: url("/img/chevron-right.svg"); }
+  .stats-link:hover {
+    text-decoration: none; }
+
 .loader {
   position: relative;
   padding-top: 20px;
