@@ -52,10 +52,9 @@ const logout = (req, res) => {
 const isAdmin = (req, res, next) => {
     User.findById(req.user)
         .then(user=> {
-            if(user.admin){
-                res.locals = {
-                    isAdmin: true
-                }
+            res.locals = {
+                isAdmin: (user.isAdmin)? true : false,
+                userBranch: user.branchId
             }
             next()
         })

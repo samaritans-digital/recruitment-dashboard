@@ -8,7 +8,7 @@ export default () => {
 
         // When something is changed, trigger reload
         form.addEventListener('change', ()=>{
-            window.location = `/?sort=${sort.value}&branch=${branch.value}`
+            window.location = `/?sort=${(sort)? sort.value : ""}&branch=${(branch)? branch.value : ""}`
         })
 
     }

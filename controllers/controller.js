@@ -13,15 +13,22 @@ const calculatePage = (rawPage)=>{
 }
 
 // Build filters
-const buildWhereQuery = (sort, branch) => {
+const buildWhereQuery = (sort, branch, userInfo) => {
+
+    console.log(userInfo)
+
     let query = {}
     // If sort is specified, filter out past interviews
     if (sort === "soonest") {
         query.booking = { startTime: { [Op.gte]: new Date() }}
     }
-    // If branch is specified, filter by it here
-    if (branch) {
-        query.branchId = branch
+    if(userInfo.isAdmin){
+        // If branch is specified, filter by it here
+        if (branch) {
+            query.branchId = branch
+        }
+    } else {
+        query.branchId = userInfo.userBranch
     }
     return query
 }
@@ -29,9 +36,10 @@ const buildWhereQuery = (sort, branch) => {
 
 // Get list of recent applicants
 const index = (req, res, next) => {
+
     Enquiry.findAll({
         order: (req.query.sort === "soonest")? [["booking.startTime", "ASC"]] : [["applicationTime", "DESC"]],
-        where: buildWhereQuery(req.query.sort, req.query.branch),
+        where: buildWhereQuery(req.query.sort, req.query.branch, res.locals),
         // Get an extra record, then pop it off and see how many are left, to see if we're on the last page
         limit: 11,
         offset: calculateOffset(req.params.page),

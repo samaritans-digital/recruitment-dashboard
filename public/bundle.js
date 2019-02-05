@@ -142,7 +142,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = () => {\n  if (document.querySelector(\".applicants-filters\")) {\n    // Grab DOM elements\n    const form = document.querySelector(\".applicants-filters\");\n    const sort = form.querySelector(\"select[name=sort]\");\n    const branch = form.querySelector(\"select[name=branch]\"); // When something is changed, trigger reload\n\n    form.addEventListener('change', () => {\n      window.location = `/?sort=${sort.value}&branch=${branch.value}`;\n    });\n  }\n};\n\n//# sourceURL=webpack:///./client/submitFilters.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = () => {\n  if (document.querySelector(\".applicants-filters\")) {\n    // Grab DOM elements\n    const form = document.querySelector(\".applicants-filters\");\n    const sort = form.querySelector(\"select[name=sort]\");\n    const branch = form.querySelector(\"select[name=branch]\"); // When something is changed, trigger reload\n\n    form.addEventListener('change', () => {\n      window.location = `/?sort=${sort ? sort.value : \"\"}&branch=${branch ? branch.value : \"\"}`;\n    });\n  }\n};\n\n//# sourceURL=webpack:///./client/submitFilters.js?");
 
 /***/ }),
 
