@@ -9,10 +9,11 @@ const userController = require("../controllers/userController")
 
 // Auth
 router.get("/login", authController.getLogin)
-router.post("/login", passwordless.requestToken(authController.sendMagicLink), authController.checkEmail)
+router.post("/login", passwordless.requestToken(authController.sendMagicLink, { failureRedirect: "/login/invalid" }), authController.checkEmail)
 router.get("/login/finish", passwordless.acceptToken({
     successRedirect: "/"
 }))
+router.get("/login/invalid", authController.invalid)
 router.get("/logout", passwordless.logout(), authController.logout)
 
 // Everything below here needs auth

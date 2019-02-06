@@ -34,13 +34,14 @@ const checkEmail = (req, res) => {
     })
 }
 
-const tokenAlreadyUsed = (req, res) => {
-    res.render("login-already-used")
-}
-
 // Process magic link and start session
 const finishLogin = (req, res) => {
     res.send("Login finished!")
+}
+
+// If email is invalid
+const invalid = (req, res) => {
+    res.render("login-invalid.njk")
 }
 
 // Clear token and log out
@@ -73,9 +74,9 @@ module.exports = {
     getLogin: getLogin,
     sendMagicLink: sendMagicLink,
     checkEmail: checkEmail,
-    tokenAlreadyUsed: tokenAlreadyUsed,
     finishLogin: finishLogin,
     logout: logout,
     isAdmin: isAdmin,
-    adminsOnly: adminsOnly
+    adminsOnly: adminsOnly,
+    invalid: invalid
 }
