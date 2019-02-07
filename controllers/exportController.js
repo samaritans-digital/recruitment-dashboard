@@ -6,16 +6,24 @@ const parser = new Parser({ fields: [
 ]})
 
 // Helper function
-const buildWhereQuery = (branchId) => {
+const buildWhereQuery = (branchId, userInfo) => {
     let query = {}
-    if(branchId) query.branchId = branchId
+    if(userInfo.isAdmin){
+        // If branch is specified, filter by it here
+        if (branchId) {
+            query.branchId = branchId
+        }
+    } else {
+        query.branchId = userInfo.userBranch
+    }
     return query
 }
 
 // Export everything
 const index = (req, res, next) => {
+
     Enquiry.findAll({
-        where: buildWhereQuery(req.params.branchId),
+        where: buildWhereQuery(req.params.branchId, res.locals),
         raw: true // Simple JSON only
     })
         .then(applicants=>applicants.map(applicant=>{
@@ -32,10 +40,13 @@ const index = (req, res, next) => {
             }
         }))
         .then(applicants=>{
-            const csv = parser.parse(applicants)
-            // res.setHeader("Content-Type", "text/csv")
-            res.attachment(`applicants-${moment().format("DD-MM-YYYY")}.csv`)
-            res.send(csv)
+
+            res.send("success")
+
+            // const csv = parser.parse(applicants)
+            // // res.setHeader("Content-Type", "text/csv")
+            // res.attachment(`applicants-${moment().format("DD-MM-YYYY")}.csv`)
+            // res.send(csv)
         })
         .catch(err=>{
             console.log(err)

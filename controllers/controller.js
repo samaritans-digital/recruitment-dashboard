@@ -14,9 +14,6 @@ const calculatePage = (rawPage)=>{
 
 // Build filters
 const buildWhereQuery = (sort, branch, userInfo) => {
-
-    console.log("\n\n\n", userInfo, "\n\n\n")
-
     let query = {}
     // If sort is specified, filter out past interviews
     if (sort === "soonest") {
