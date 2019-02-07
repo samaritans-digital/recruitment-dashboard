@@ -10,8 +10,6 @@ export default () => {
         // Turn on polyfill
         dialogPolyfill.registerDialog(modal);
 
-        console.log(buttons)
-
         buttons.forEach(button => {
             button.addEventListener('click', ()=> {
                 // Set value of field to remove

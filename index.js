@@ -52,7 +52,6 @@ server.use(session({
     resave: false,
     saveUninitialized: true,
     cookie : {
-        // Change this
         maxAge: 1000 * 60 * 30
     },
     store: new (require("connect-pg-simple")(session))()
