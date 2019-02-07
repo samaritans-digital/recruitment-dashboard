@@ -338,7 +338,8 @@ main
         float: right
         margin-top: -67px
 
-.applicants-filters__select
+.applicants-filters__select,
+.applicants-filters__search
     margin-right: 10px
     width: 75%
     font-size: 1em
@@ -347,13 +348,6 @@ main
     border: 1px solid transparentize($grey, 0.9)
     color: $grey
     background: none
-    background-image: url('/img/chevron-down.svg')
-    background-size: 20px
-    background-repeat: no-repeat
-    background-position: 99% center
-    -webkit-appearance: none
-    -moz-appearance: none
-    appearance: none
     &:first-of-type
         margin-bottom: 10px
     @media screen and (min-width: 768px)
@@ -362,6 +356,16 @@ main
             margin-bottom: 0px
         &:last-of-type
             margin-right: 0px
+
+.applicants-filters__select
+    background-image: url('/img/chevron-down.svg')
+    background-size: 20px
+    background-repeat: no-repeat
+    background-position: 99% center
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+
 
 // Grid helper
 .grid

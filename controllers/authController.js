@@ -51,7 +51,7 @@ const logout = (req, res) => {
 
 // Check whether user is admin
 const isAdmin = (req, res, next) => {
-    User.findById(req.user)
+    User.findByPk(req.user)
         .then(user=> {
             res.locals = {
                 isAdmin: (user.admin)? true : false,

@@ -1,12 +1,21 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    email: DataTypes.STRING,
-    branchId: DataTypes.STRING,
-    admin: DataTypes.BOOLEAN
-  }, {});
-  User.associate = function(models) {
-    // associations can be defined here
-  };
-  return User;
-};
+"use strict"
+
+const branchNameFromId = require("../utils/branchNameFromId")
+
+module.exports = (sequelize, Sequelize) => {
+    const User = sequelize.define("User", {
+
+        // Virtual columns
+        branchName: {
+            type: Sequelize.VIRTUAL,
+            get: function () {
+                return branchNameFromId(this.getDataValue("branchId"))
+            }
+        },
+
+        email: Sequelize.STRING,
+        branchId: Sequelize.STRING,
+        admin: Sequelize.BOOLEAN
+    }, {})
+    return User
+}

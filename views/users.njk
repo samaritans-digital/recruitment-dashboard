@@ -30,7 +30,7 @@
             {% for user in users %}
                 <tr>
                     <th scope="row">{{user.email}}</th>
-                    <td>{% if user.admin %}<span class="administrator-badge">Admin</span>{% else %}{{user.branchId}}{% endif %}</td>
+                    <td>{% if user.admin %}<span class="administrator-badge">Admin</span>{% else %}{{user.branchName}}{% endif %}</td>
                     <td>
                         <button class="all-users__remove" id="launch-remove-user-modal" data-user="{{user.email}}">Remove</button>
                     </td>

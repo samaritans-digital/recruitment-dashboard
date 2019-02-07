@@ -385,7 +385,8 @@ main {
       float: right;
       margin-top: -67px; } }
 
-.applicants-filters__select {
+.applicants-filters__select,
+.applicants-filters__search {
   margin-right: 10px;
   width: 75%;
   font-size: 1em;
@@ -393,7 +394,22 @@ main {
   border-radius: 2px;
   border: 1px solid rgba(51, 51, 51, 0.1);
   color: #333;
-  background: none;
+  background: none; }
+  .applicants-filters__select:first-of-type,
+  .applicants-filters__search:first-of-type {
+    margin-bottom: 10px; }
+  @media screen and (min-width: 768px) {
+    .applicants-filters__select,
+    .applicants-filters__search {
+      width: 195px; }
+      .applicants-filters__select:first-of-type,
+      .applicants-filters__search:first-of-type {
+        margin-bottom: 0px; }
+      .applicants-filters__select:last-of-type,
+      .applicants-filters__search:last-of-type {
+        margin-right: 0px; } }
+
+.applicants-filters__select {
   background-image: url("/img/chevron-down.svg");
   background-size: 20px;
   background-repeat: no-repeat;
@@ -401,15 +417,6 @@ main {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; }
-  .applicants-filters__select:first-of-type {
-    margin-bottom: 10px; }
-  @media screen and (min-width: 768px) {
-    .applicants-filters__select {
-      width: 195px; }
-      .applicants-filters__select:first-of-type {
-        margin-bottom: 0px; }
-      .applicants-filters__select:last-of-type {
-        margin-right: 0px; } }
 
 @supports (display: grid) {
   @media screen and (min-width: 768px) {
