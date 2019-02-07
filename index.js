@@ -44,7 +44,7 @@ server.use(bodyParser.urlencoded({ extended: false }))
 passwordless.init(new PostgreStore(process.env.DATABASE_URL))
 passwordless.addDelivery((tokenToSend, uidToSend, recipient, callback) => {
     // Send out a token
-    emails.sendEmail(tokenToSend, uidToSend, recipient)
+    emails.sendLoginEmail(tokenToSend, uidToSend, recipient)
     callback()
 })
 server.use(session({
@@ -53,7 +53,7 @@ server.use(session({
     saveUninitialized: true,
     cookie : {
         // Change this
-        maxAge: 1000 * 60 * 30 * 1000
+        maxAge: 1000 * 60 * 30
     },
     store: new (require("connect-pg-simple")(session))()
 }))
