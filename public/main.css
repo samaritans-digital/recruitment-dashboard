@@ -637,15 +637,24 @@ main {
   font-style: normal;
   font-size: 0.9em; }
 
-.stats-link {
+.stats__link {
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   display: block;
-  margin-top: -10px; }
-  .stats-link:after {
+  text-align: right;
+  margin-top: -5px; }
+  .stats__link:after {
     content: "";
-    background-image: url("/img/chevron-right.svg"); }
-  .stats-link:hover {
+    background-image: url("/img/chevron-right.svg");
+    width: 11px;
+    height: 13px;
+    display: inline-block;
+    margin-left: 8px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(1px); }
+  .stats__link:hover {
     text-decoration: none; }
 
 .loader {

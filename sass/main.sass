@@ -613,14 +613,24 @@ main
     font-size: 0.9em
 
 
-.stats-link
+// Stats link
+.stats__link
     font-weight: bold
-    margin-bottom: 20px
+    margin-bottom: 25px
     display: block
-    margin-top: -10px
+    text-align: right
+    margin-top: -5px
     &:after
         content: ""
         background-image: url('/img/chevron-right.svg')
+        width: 11px
+        height: 13px
+        display: inline-block
+        margin-left: 8px
+        background-size: contain
+        background-position: center
+        background-repeat: no-repeat
+        transform: translateY(1px)
     &:hover
         text-decoration: none
 
