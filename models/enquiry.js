@@ -25,12 +25,12 @@ module.exports = (sequelize, Sequelize) => {
                 }
             }
         },
-        searchConcat: {
-            type: Sequelize.VIRTUAL,
-            get: function(){
-                return `${this.getDataValue("firstName")} ${this.getDataValue("lastName")} ${this.getDataValue("email")} ${this.getDataValue("phone")}`
-            }
-        },
+        // searchConcat: {
+        //     type: Sequelize.VIRTUAL,
+        //     get: function(){
+        //         return `${this.getDataValue("firstName")} ${this.getDataValue("lastName")} ${this.getDataValue("email")} ${this.getDataValue("phone")}`
+        //     }
+        // },
 
         firstName: Sequelize.STRING,
         lastName: Sequelize.STRING,

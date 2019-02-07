@@ -19,6 +19,21 @@ export default () => {
                 applicants.innerHTML = data.applicantCount
                 slots.innerHTML = data.unbookedSlots
                 waiting.innerHTML = (data.avgWaitingTime)? `${data.avgWaitingTime} days` : '?'
+
+                // Comparisons
+                if(data.applicantCount > data.applicantCountLastMonth){
+                    applicants.classList.add("kpi__stat--positive-change")
+                }
+                if(data.applicantCount < data.applicantCountLastMonth) {
+                    applicants.classList.add("kpi__stat--negative-change")                
+                }
+                if(data.avgWaitingTime > data.avgWaitingTimeLastMonth){
+                    waiting.classList.add("kpi__stat--positive-change")
+                }
+                if(data.avgWaitingTime < data.avgWaitingTimeLastMonth) {
+                    waiting.classList.add("kpi__stat--negative-change")                
+                }
+
             })
             .catch(data=>{
                 applicants.innerHTML = '?'

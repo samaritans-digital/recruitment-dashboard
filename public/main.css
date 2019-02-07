@@ -640,6 +640,31 @@ main {
   .kpi__stat.kpi__stat--purple {
     color: #563E71; }
 
+.kpi__stat--positive-change:after,
+.kpi__stat--negative-change:after {
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 24px;
+  margin-left: 12px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.8; }
+
+.kpi__stat--positive-change.kpi__stat--orange:after,
+.kpi__stat--negative-change.kpi__stat--orange:after {
+  background-image: url(/img/arrow-orange.svg); }
+
+.kpi__stat--positive-change.kpi__stat--purple:after,
+.kpi__stat--negative-change.kpi__stat--purple:after {
+  background-image: url(/img/arrow-purple.svg); }
+
+.kpi__stat--positive-change:after {
+  transform: rotate(-90deg); }
+
+.kpi__stat--negative-change:after {
+  transform: rotate(90deg); }
+
 .kpi__caption {
   font-style: normal;
   font-size: 0.9em; }

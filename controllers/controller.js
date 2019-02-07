@@ -50,10 +50,6 @@ const index = (req, res, next) => {
                     lastPage = false
                     applicants.pop()
                 }
-
-                console.log("\n\n\n", applicants[0].searchConcat, "\n\n\n")
-
-
                 // Render view
                 res.render("index", {
                     error: false,
