@@ -13,7 +13,6 @@
     "postinstall": "gulp build",
     "migrate": "node_modules/.bin/sequelize db:migrate",
     "seed": "node_modules/.bin/sequelize db:seed --seed seed-enquiries",
-    "sync": "node utils/dynamodbExport && node_modules/.bin/sequelize db:seed --seed seed-enquiries",
     "branches": "node tools/prepareBranchNames"
   },
   "author": "",

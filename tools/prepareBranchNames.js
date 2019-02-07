@@ -14,15 +14,6 @@ rawDataArray.map( branch => {
     }
 })
 
-// rawDataArray.map((branch)=>{
-//     processedData.push({
-//         name: branch.name,
-//         id: branch.id
-//     })
-// })
-
-console.log(processedData)
-
 fs.writeFile("./branch-names.json", JSON.stringify(processedData), ()=>{
     console.log("✅  Done!")
 })
