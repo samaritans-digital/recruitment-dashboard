@@ -40,13 +40,10 @@ const index = (req, res, next) => {
             }
         }))
         .then(applicants=>{
-
-            res.send("success")
-
-            // const csv = parser.parse(applicants)
-            // // res.setHeader("Content-Type", "text/csv")
-            // res.attachment(`applicants-${moment().format("DD-MM-YYYY")}.csv`)
-            // res.send(csv)
+            const csv = parser.parse(applicants)
+            // res.setHeader("Content-Type", "text/csv")
+            res.attachment(`applicants-${moment().format("DD-MM-YYYY")}.csv`)
+            res.send(csv)
         })
         .catch(err=>{
             console.log(err)
