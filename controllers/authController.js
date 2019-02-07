@@ -59,6 +59,7 @@ const isAdmin = (req, res, next) => {
             }
             next()
         })
+        .catch(err=>res.redirect("/login"))
 }
 
 // Only permit requests from administrators
