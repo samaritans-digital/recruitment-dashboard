@@ -3,3 +3,5 @@ enquiries.json
 node_modules
 .DS_store
 branch-data.json
+main.css
+bundle.js
