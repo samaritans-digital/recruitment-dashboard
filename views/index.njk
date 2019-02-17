@@ -10,7 +10,7 @@
 
 {% block headerModifierClass %}page-header--overlap{% endblock %}
 {% block headline %}Recruitment dashboard{% endblock %}
-{% block lede %}See how your branch is performing in recruitment, relative to others in the region and the country.{% endblock %}
+{% block lede %}See details of recent applicants, and monitor how recruitment is going at your branch.{% endblock %}
 {% block main %}
 
 {% if page === 1 %}
@@ -21,10 +21,10 @@
                 <cite class="kpi__caption">Applicants {% if branchQuery %}to this branch{% else %}to all branches{% endif %} in the last 30 days</cite>
             </blockquote>
         </div>
-        <div class="block">
+        <div class="block" {% if branchQuery %}data-tippy="If an applicant chose this branch, this is the number of interview slots they would be offered"{% endif %}>
             <blockquote class="kpi">
                 <q class="kpi__stat" id="kpi-unbooked-slots">{{ loader() }}</q>
-                <cite class="kpi__caption with-tooltip" title="Including remote interviews hosted at other nearby branches">Free interview slots {% if branchQuery %}for this branch{% else %}for all branches{% endif %} right now</cite>
+                <cite class="kpi__caption with-tooltip">Free interview slots {% if branchQuery %}for this branch{% else %}for all branches{% endif %} right now</cite>
             </blockquote>
         </div>
         <div class="block">
@@ -35,11 +35,21 @@
         </div>
     </section>
 
-    <a href="/statistics" class="stats__link">See cluster and region stats</a>
+    <div class="stats">
+        <a href="/statistics" class="stats__link">See cluster and region stats</a>
+    </div>
+
+
+
+
 {% endif %}
 
 <main class="block block--bottom-margin">
-    <h2 class="block__title">{% if sortQuery === "soonest" %}Upcoming interviews{% else %}Recent applicants{% endif %}{% if page > 1 %}, page {{ page }}{% endif %}</h2>
+    <h2 class="block__title">
+        {% if sortQuery === "soonest" %}Upcoming interviews{% else %}Recent applicants{% endif %}{% if page > 1 %}, page {{ page }}{% endif %}
+        <small class="block__notice">This list updates twice daily.</small>
+    </h2>
+    
     <form class="applicants-filters">
 
         {# <label for="search" class="visually-hidden">Search by name</label>
@@ -65,9 +75,9 @@
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col" class="with-tooltip" title="The branch this person wants to volunteer at">Chosen branch</th>
-                <th scope="col" class="with-tooltip" title="The time and date of the interview this person booked">Interview</th>
-                <th scope="col" class="with-tooltip" title="When this person filled in the online form">Applied</th>
+                <th scope="col" class="with-tooltip" >Chosen branch</th>
+                <th scope="col" class="with-tooltip" >Interview</th>
+                <th scope="col" class="with-tooltip" >Applied</th>
             </tr>
         </thead>
         <tbody>

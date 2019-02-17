@@ -25,6 +25,10 @@ const transpileJs = (cb) => {
             module: {
                 rules: [
                     {
+                        test: /\.css$/,
+                        use: ["css-loader"],
+                      },
+                    {
                         test: /\.m?js$/,
                         exclude: /(node_modules|bower_components)/,
                         use: {
@@ -80,6 +84,10 @@ const watchJs = (cb) => {
             entry: "./client/main.js",
             module: {
                 rules: [
+                    {
+                        test: /\.css$/,
+                        use: ["css-loader"],
+                      },
                     {
                         test: /\.m?js$/,
                         exclude: /(node_modules|bower_components)/,

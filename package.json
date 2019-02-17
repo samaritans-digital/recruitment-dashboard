@@ -1,8 +1,8 @@
 {
   "name": "samaritans-dashboard",
-  "version": "1.0.0", 
-  "engines": { 
-    "node": "9.9.0" 
+  "version": "1.0.0",
+  "engines": {
+    "node": "9.9.0"
   },
   "description": "",
   "main": "index.js",
@@ -38,13 +38,16 @@
     "pg": "^7.7.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.42.0",
-    "sequelize-cli": "^5.4.0"
+    "sequelize-cli": "^5.4.0",
+    "style-loader": "^0.23.1",
+    "tippy.js": "^3.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
+    "css-loader": "^2.1.0",
     "eslint": "^5.11.0",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",

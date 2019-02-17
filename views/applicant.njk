@@ -24,23 +24,23 @@
                 {% if applicant.booking %}
 
                     {% if applicant.sentMailReminder%}
-                        <li class="with-tooltip timeline__step timeline__step--complete" title="Email reminders are sent a week before the interview.">
+                        <li class="with-tooltip timeline__step timeline__step--complete"  data-tippy="SMS reminders are sent the day before interview">
                             <p>Email reminder sent</p>
                         </li>
                     {% elif interviewComplete %}
                     {% else %}
-                        <li class="with-tooltip timeline__step" title="Email reminder will be sent one week before the interview">
+                        <li class="with-tooltip timeline__step" data-tippy="Email reminders are sent seven days before interview">
                             <p>Email reminder not yet sent</p>
                         </li>
                     {% endif %}
 
                     {% if applicant.sentSmsReminder %}
-                        <li class="with-tooltip timeline__step timeline__step--complete" title="SMS reminders are sent 24 hours before the interview.">
+                        <li class="with-tooltip timeline__step timeline__step--complete" data-tippy="SMS reminders are sent the day before interview">
                             <p>SMS reminder sent</p>
                         </li>
                     {% elif interviewComplete %}
                     {% else %}
-                        <li class="with-tooltip timeline__step" title="SMS reminder will be sent one day before the interview">
+                        <li class="with-tooltip timeline__step" data-tippy="SMS reminders are sent the day before interview">
                             <p>SMS reminder not yet sent</p>
                         </li>
                     {% endif %}

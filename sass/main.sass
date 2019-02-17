@@ -4,6 +4,7 @@
 
 // Dialog polyfill CSS
 @import 'dialog-polyfill/dialog-polyfill'
+@import 'tippy.js/dist/tippy'
 
 // Resets
 *
@@ -206,6 +207,13 @@ main
     @media screen and (min-width: 992px)
         margin-bottom: 35px
 
+.block__notice
+    font-size: 0.6em
+    font-weight: 400
+    color: $grey
+    margin-top: 5px
+    display: block
+
 // Recent applicants table
 .applicants-table
     width: 100%
@@ -336,7 +344,7 @@ main
     margin-bottom: 25px
     @media screen and (min-width: 768px)
         float: right
-        margin-top: -67px
+        margin-top: -84px
 
 .applicants-filters__select,
 .applicants-filters__search
@@ -522,9 +530,6 @@ main
 .small
     font-size: 0.9em
 
-.with-tooltip
-    cursor: help
-
 .none-given
     color: transparentize($grey, 0.5)
     font-style: italic
@@ -645,12 +650,15 @@ main
 
 
 // Stats link
+.stats
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    margin-bottom: 25px
+    margin-top: -5px
+
 .stats__link
     font-weight: bold
-    margin-bottom: 25px
-    display: block
-    text-align: right
-    margin-top: -5px
     &:after
         content: ""
         background-image: url('/img/chevron-right-blue.svg')
