@@ -28,6 +28,7 @@ The app needs the following environment variables set to run:
 * `EVENRBRITE_ORGANISER`, an Eventbrite organiser ID number, to identify the right account to query
 * `SESSION_SECRET`, to hash session tokens
 * `MANDRILL_API_KEY`, for the Mailchimp Mandrill service, needed to send emails
+* `GOOGLE_ANALYTICS_ID`, the tracking ID for the Google Analytics property
 
 
 Running locally
