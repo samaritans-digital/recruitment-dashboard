@@ -1,5 +1,5 @@
 
-import tippy from 'tippy.js'
+// import tippy from 'tippy.js'
 import submitFilters from './submitFilters'
 import launchModal from './launchModal'
 import launchRemoveUserModal from './removeUser'
