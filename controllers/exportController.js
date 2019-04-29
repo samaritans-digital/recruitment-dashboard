@@ -2,7 +2,7 @@ const Enquiry = require("../models").Enquiry
 const moment = require("moment")
 const Parser = require("json2csv").Parser
 const parser = new Parser({ fields: [
-    "firstName", "lastName", "email", "phone", "branch", "applied", "role", "accessibilityRequirements", "interview"
+    "firstName", "lastName", "email", "phone", "branch", "applied", "gender", "ageRange", "ethnicBackground", "role", "accessibilityRequirements", "interview"
 ]})
 
 // Helper function
@@ -34,6 +34,9 @@ const index = (req, res, next) => {
                 phone: applicant.phone,
                 branch: applicant.branchId,
                 applied: applicant.applicationTime,
+                gender: applicant.gender,
+                ageRange: applicant.ageRange,
+                ethnicBackground: applicant.ethnicBackground,
                 role: applicant.role,
                 accessibilityRequirements: applicant.accessibilityRequirements,
                 interview: (applicant.booking)? "booked" : "none booked"
