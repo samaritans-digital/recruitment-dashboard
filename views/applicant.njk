@@ -115,15 +115,15 @@
                             <th scope="row">Type</th>
                             <td>{{applicant.booking.type | prettyInterviewType}}</td>
                         </tr>
-                        {% if applicant.branchId !== applicant.booking.branch.id %}
                             <tr>
                                 <th scope="row">Host branch</th>
                                 <td>
                                     {{applicant.booking.branch.name}}
-                                    <a class="email-link" href="mailto:{{applicant.booking.branch.email}}">Email host branch</a>
+                                    {% if applicant.branchId !== applicant.booking.branch.id %}
+                                        <a class="email-link" href="mailto:{{applicant.booking.branch.email}}">Email host branch</a>
+                                    {% endif %}
                                 </td>
                             </tr>
-                        {% endif %}
                         <tr>
                             <th scope="row">For role</th>
                             <td>{{applicant.role | prettyRole}}</td>

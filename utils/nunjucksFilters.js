@@ -26,7 +26,7 @@ module.exports = (env) => {
         if(rawRole === "listening-volunteer"){
             return "Listening volunteer"
         } else {
-            return "Branch volunteer"
+            return "Non-listening volunteer"
         }
     })
 

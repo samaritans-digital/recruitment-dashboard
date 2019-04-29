@@ -58,6 +58,12 @@ server.use(session({
 }))
 server.use(passwordless.sessionSupport())
 
+// Make GA ID available to views
+server.use((req, res, next) => {
+    res.locals.ga = process.env.GOOGLE_ANALYTICS_ID
+    next()
+})
+
 // Bind routes to URLs
 server.use(express.static("public"))
 server.use("/", router)
