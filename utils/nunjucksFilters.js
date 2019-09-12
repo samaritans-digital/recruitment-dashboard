@@ -18,7 +18,7 @@ module.exports = (env) => {
 
     // Convert date to XXth Dec XX Xpm format
     env.addFilter("prettyDate", (rawDate) => {
-        return moment(rawDate).format("Do MMM YYYY ha")
+        return moment(rawDate).format("Do MMM YYYY h:mma")
     })
 
     // Pretty up the role field
