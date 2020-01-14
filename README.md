@@ -53,7 +53,7 @@ Database import job
 
 To list recent applicants, this app uses a postgres database separate from the live DynamoDB database that applications are written to as they come in.
 
-This is partly because of limitations querying DynamoDB. This doesn't hurt data integrity since no data is editable from this dashboard.
+This is partly because of limitations querying DynamoDB. This doesn't hurt data integrity since that data isn't editable from this dashboard.
 
 The postgres database is synced daily at 4am using a Heroku scheduler job, which runs the following tasks sequentially:
 
