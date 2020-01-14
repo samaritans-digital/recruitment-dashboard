@@ -25,7 +25,7 @@ The app needs the following environment variables set to run:
 * `FRONTEND_HOST`, the location of the Samaritans volunteer front-end app on the web
 * `HOST`, the location of this dashboard on the web
 * `EVENTBRITE_TOKEN`, an Oauth API Token from Eventbrite, to calculate some KPIs
-* `EVENRBRITE_ORGANISER`, an Eventbrite organiser ID number, to identify the right account to query
+* `EVENTBRITE_ORGANISER`, an Eventbrite organiser ID number, to identify the right account to query
 * `SESSION_SECRET`, to hash session tokens
 * `MANDRILL_API_KEY`, for the Mailchimp Mandrill service, needed to send emails
 * `GOOGLE_ANALYTICS_ID`, the tracking ID for the Google Analytics property
