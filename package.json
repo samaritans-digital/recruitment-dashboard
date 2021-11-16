@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.382.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.18.3",
     "connect-pg-simple": "^5.0.0",
     "dialog-polyfill": "^0.4.10",
